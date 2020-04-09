@@ -1,20 +1,13 @@
 const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-
 module.exports = {
   entry: path.resolve(__dirname, "./app"),
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
   },
-  mode: "development",
-  devServer: {
-    contentBase: path.join(__dirname, "build"),
-    compress: true,
-    port: 3000,
-    hot: true,
-  },
+  mode: "production",
   module: {
     rules: [
       {
@@ -23,6 +16,14 @@ module.exports = {
         use: {
           loader: "babel-loader",
         },
+      },
+      {
+        test: /\.svg$/,
+        loader: "svg-inline-loader",
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
