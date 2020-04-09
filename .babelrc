@@ -13,11 +13,16 @@
   "plugins": [
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-proposal-class-properties",
-    "babel-plugin-dynamic-import-node"
-  ],
-  "env": {
-    "test": {
-      "plugins": ["dynamic-import-node","@babel/plugin-transform-runtime"]
-    }
-  }
+    "babel-plugin-dynamic-import-node",
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "test": "./test",
+          "underscore": "lodash"
+        }
+      }
+    ]
+  ]
 }

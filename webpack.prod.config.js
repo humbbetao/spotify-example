@@ -5,7 +5,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-  entry: path.resolve(__dirname, './app'),
+  entry: path.resolve(__dirname, './src/app'),
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
