@@ -1,7 +1,8 @@
-import { all } from 'redux-saga/effects';
+import { all } from 'redux-saga/effects'
 
-import spotify from '../reducers/spotify/sagas';
+import token from '../reducers/token/sagas'
+import userActions from '../reducers/userActions/sagas'
 
 export default function* sagas() {
-  return yield all([spotify]);
+  return yield all([token, userActions])
 }

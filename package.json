@@ -7,7 +7,7 @@
     "build:development": "webpack  --config webpack.dev.config.js",
     "build:production": "webpack --config webpack.prod.config.js",
     "build:homolog": "webpack --config webpack.homolog.config.js",
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --config webpack.dev.config.js",
     "test": "jest",
     "test:nowatch": "jest --watchAll=false",
     "test:watch": "jest --watchAll=true",
@@ -59,7 +59,8 @@
     "terser": "^4.6.11",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.10.3",
+    "webpack-dotenv-plugin": "^2.1.0"
   },
   "dependencies": {
     "@storybook/addon-knobs": "^5.3.18",

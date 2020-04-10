@@ -1,8 +1,9 @@
-const path = require('path');
-const TerserPlugin = require('terser-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path')
+const TerserPlugin = require('terser-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const DotenvPlugin = require('webpack-dotenv-plugin')
 
 module.exports = {
   entry: path.resolve(__dirname, './src/app'),
@@ -65,10 +66,15 @@ module.exports = {
         minifyURLs: true,
       },
     }),
-
+    new DotenvPlugin({
+      // makes vars available to the application js code
+      path: '.env',
+      sample: '.env.homolog',
+      allowEmptyValues: true,
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css',
       chunkFilename: '[id].[hash].css',
     }),
   ],
-};
+}

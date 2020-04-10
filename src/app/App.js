@@ -1,6 +1,7 @@
 import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Home from 'pages/home'
+import NoMatch from 'pages/noMatch'
 import { Provider } from 'react-redux'
 import storeRedux from 'store'
 import './styles.css'
@@ -8,7 +9,14 @@ import './styles.css'
 const App = () => (
   <Provider store={storeRedux}>
     <BrowserRouter>
-      <Home />
+      <Switch>
+        <Route path="/">
+          <Home />
+        </Route>
+        <Route path="*">
+          <NoMatch />
+        </Route>
+      </Switch>
     </BrowserRouter>
   </Provider>
 )

@@ -1,0 +1,7 @@
+import MODULE from './module'
+
+export default {
+  GET_TOKEN: `@${MODULE}/GET_TOKEN_REQUEST`,
+  GET_TOKEN_SUCCESS: `@${MODULE}/GET_TOKEN_SUCCESS`,
+  GET_TOKEN_ERROR: `@${MODULE}/GET_TOKEN_ERROR`,
+}
