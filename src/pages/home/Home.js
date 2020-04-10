@@ -1,5 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react'
 
-const Home = () => <p>Hello World!</p>;
-
-export default Home;
+export default function Home() {
+  const [query, setQuery] = useState('')
+  const handleOnChangeQuery = (e) => {
+    setQuery(e.target.value)
+  }
+  return (
+    <div style={{ color: '#fff' }}>
+      <input type="text" onChange={handleOnChangeQuery} value={query}></input>
+    </div>
+  )
+}

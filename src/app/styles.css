@@ -5,6 +5,35 @@
   src: local('Roboto'), local('Roboto'),
     url('../assets/fonts/Roboto-Regular.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'RobotoBold';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto-Bold'), local('Roboto Bold'),
+    url('../assets/fonts/Roboto-Bold.ttf') format('truetype');
+}
+
+:root {
+  --font-regular: 'Roboto';
+  --font-bold: 'RobotoBold';
+  --primary-color: '#999999';
+  --secondary-color: '#FAFAFA';
+  --third-color: '#FFFFFF';
+}
+
 body {
-  font-family: 'Roboto';
+  /* reset the default border */
+  border: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 28px;
+  box-sizing: border-box;
+
+  background-color: #000000;
+  font: var(--font-bold);
 }
