@@ -1,0 +1,6 @@
+{
+    "video": false,
+    "baseUrl": "http://localhost:8080",
+    "failOnStatus": false
+  }
+  

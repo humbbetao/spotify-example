@@ -1,9 +1,9 @@
-import ActionTypes from './actionTypes'
+import ActionTypes from './actionTypes';
 
 export default {
-  makeTest: function () {
+  makeTest() {
     return {
       type: ActionTypes.TEST,
-    }
+    };
   },
-}
+};

@@ -1,8 +1,8 @@
 
-var devConfig = require('./webpack.dev.config.js');
-var prodConfig = require('./webpack.prod.config.js');
+const devConfig = require('./webpack.dev.config.js');
+const prodConfig = require('./webpack.prod.config.js');
 
-var config;
+let config;
 
 switch (process.env.npm_lifecycle_event) {
   case 'start':

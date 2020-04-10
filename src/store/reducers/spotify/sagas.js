@@ -1,8 +1,8 @@
-import { all, takeLatest } from 'redux-saga/effects'
-import ActionTypes from './actionTypes'
+import { all, takeLatest } from 'redux-saga/effects';
+import ActionTypes from './actionTypes';
 
 function* getTest() {
-  yield 'works'
+  yield 'works';
 }
 
-export default all([takeLatest(ActionTypes.TEST, getTest)])
+export default all([takeLatest(ActionTypes.TEST, getTest)]);

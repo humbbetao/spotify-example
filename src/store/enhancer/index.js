@@ -1,1 +1,1 @@
-export { default } from './enhancer'
+export { default } from './enhancer';

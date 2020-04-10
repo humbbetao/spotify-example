@@ -1,1 +1,1 @@
-export default 'SPOTIFY'
+export default 'SPOTIFY';
