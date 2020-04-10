@@ -1,0 +1,22 @@
+header {
+  width: 100%;
+  box-sizing: border-box;
+  height: 200px;
+}
+
+header > div {
+  width: 900px;
+  margin: 57px auto 83px auto;
+}
+article {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: calc(100% - 200px);
+}
+
+article > div {
+  width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+}

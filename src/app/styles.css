@@ -36,4 +36,6 @@ body {
 
   background-color: #000000;
   font: var(--font-bold);
+
+  margin: 0 auto;
 }

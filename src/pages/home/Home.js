@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
+import TextInput from 'components/TextInput'
+import './home.css'
+
+import List from 'components/List'
 
 export default function Home() {
-  const [query, setQuery] = useState('')
-  const handleOnChangeQuery = (e) => {
-    setQuery(e.target.value)
-  }
   return (
-    <div style={{ color: '#fff' }}>
-      <input type="text" onChange={handleOnChangeQuery} value={query}></input>
-    </div>
+    <React.Fragment>
+      <header>
+        <TextInput></TextInput>
+      </header>
+      <article>
+        <List />
+      </article>
+    </React.Fragment>
   )
 }
