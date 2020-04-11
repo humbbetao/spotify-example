@@ -1,4 +1,4 @@
-input[type='text'] {
+.text-input {
   width: 100%;
   padding: 12px 20px;
   display: inline-block;

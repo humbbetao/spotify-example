@@ -1,9 +1,11 @@
 import React from 'react'
-// import { dispatch } from 'react-redux'
-import TextInput from 'components/TextInput'
 import './home.css'
 
+import Search from 'components/Search'
+import Sidebar from 'components/Sidebar'
 import List from 'components/List'
+import Header from 'components/Header'
+import Article from 'components/Article'
 
 export default class Home extends React.Component {
   componentDidMount() {
@@ -11,8 +13,6 @@ export default class Home extends React.Component {
   }
   getToken = () => {
     const able = false
-    console.log('entrou')
-    console.log(window.location)
     if (able) {
       const { getToken, setToken, setError, ...props } = this.props
       try {
@@ -37,12 +37,13 @@ export default class Home extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <header>
-          <TextInput></TextInput>
-        </header>
-        <article>
+        <Header>
+          <Search></Search>
+        </Header>
+        <Sidebar>asjkdhaskjd</Sidebar>
+        <Article>
           <List />
-        </article>
+        </Article>
       </React.Fragment>
     )
   }

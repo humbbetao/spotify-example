@@ -21,16 +21,17 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
-      {
-        test: /\.svg$/,
-        loader: 'svg-inline-loader',
-      },
+
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|otf)$/,
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
+      {
+        test: /\.(png|jpg|gif|woff|woff2|eot|ttf|otf)$/,
         use: ['file-loader'],
       },
     ],

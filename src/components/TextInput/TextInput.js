@@ -1,21 +1,14 @@
-import React, { useState, useRef } from 'react'
+import React from 'react'
 import './textInput.css'
-export default function TextInput() {
-  const [query, setQuery] = useState('')
-  const handleOnChangeQuery = e => {
-    setQuery(e.target.value)
-  }
+
+export default function TextInput({ value, onChange }) {
   return (
-    <React.Fragment>
-      <label style={{ color: '#fff' }}>
-        Busque por artistas, álbuns ou músicas Name
-      </label>
-      <input
-        type="text"
-        onChange={handleOnChangeQuery}
-        value={query}
-        placeholder="Comece a escrever..."
-      ></input>
-    </React.Fragment>
+    <input
+      type="text"
+      className="text-input"
+      onChange={onChange}
+      value={value}
+      placeholder="Comece a escrever..."
+    ></input>
   )
 }
