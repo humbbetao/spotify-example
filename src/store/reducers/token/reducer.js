@@ -4,7 +4,7 @@ export default function tokenReducer(state = {}, action) {
     case ActionTypes.GET_TOKEN_SUCCESS:
       return {
         ...state,
-        token: action.token,
+        token: action.payload.token,
       }
 
     default:

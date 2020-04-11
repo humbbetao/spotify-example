@@ -9,6 +9,8 @@ export default function TextInput({
 }) {
   const interval = 500 //2s
   const checkWhenUserStopTypying = () => {
+    if (!value) return
+
     const timeout = setTimeout(callback, interval)
 
     return () => clearTimeout(timeout)

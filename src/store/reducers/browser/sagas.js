@@ -4,20 +4,19 @@ import Request from 'config/Request'
 import ActionTypes from './actionTypes'
 import ActionCreators from './actionCreators'
 
-function* browserAlbuns() {
-  try {
-    const ids = 1
+import BrowserServices from 'services/BrowserServices'
 
-    const response = yield Request.get(
-      `https://api.spotify.com/v1/me/tracks?ids=${ids}`
-    )
+function* browserAlbuns(action) {
+  const { query } = action.payload
+  try {
+    const response = yield BrowserServices.browserByAlbuns(query)
     if (response.ok) {
       yield put(ActionCreators.setAlbuns(id))
     } else {
       yield put(ActionCreators.setAlbunsError(response.error))
     }
-  } catch (e) {
-    yield put(ActionCreators.setAlbunsError(err))
+  } catch (error) {
+    yield put(ActionCreators.setAlbunsError(error))
   }
 }
 

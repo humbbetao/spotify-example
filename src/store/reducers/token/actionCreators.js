@@ -8,13 +8,13 @@ export default {
   setToken: function(token) {
     return {
       type: ActionTypes.GET_TOKEN_SUCCESS,
-      token,
+      payload: { token },
     }
   },
   setError: function(error) {
     return {
       type: ActionTypes.GET_TOKEN_ERROR,
-      error,
+      payload: { error },
     }
   },
 }

@@ -1,10 +1,8 @@
 import React from 'react'
 import './home.css'
-
 import Browser from 'components/Browser'
 import Sidebar from 'components/Sidebar'
 import List from 'components/List'
-import Header from 'components/Header'
 import Article from 'components/Article'
 
 export default class Home extends React.Component {
@@ -12,7 +10,7 @@ export default class Home extends React.Component {
     this.getToken()
   }
   getToken = () => {
-    const able = false
+    const able = true
     if (able) {
       const { getToken, setToken, setError, ...props } = this.props
       try {
