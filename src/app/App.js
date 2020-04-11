@@ -10,7 +10,7 @@ const App = () => (
   <Provider store={storeRedux}>
     <BrowserRouter>
       <Switch>
-        <Route path="/">
+        <Route path={['/', '/callback']}>
           <Home />
         </Route>
         <Route path="*">
