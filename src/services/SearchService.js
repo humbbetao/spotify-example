@@ -1,14 +1,10 @@
-import request from 'helpers/request'
-import EnvVars from 'helpers/envVars'
-import buildHTTPResponseHandler from 'helpers/buildHTTPResponseHandler'
-
+import request from 'config/request'
 const domain = process.env.BROWSER_API
-const serviceName = 'DealerServices'
 
-export default class DealerServices {
-  static getSellers = () => {
-    return request
-      .get(`${BROWSER_API}`)
-      .then(response => response)
+const defaultType = 'album'
+export default class BrowserServices {
+  static browserByAlbuns = query => {
+    const params = { q: query, type: defaultType }
+    return request.get(domain, params).then(response => response)
   }
 }

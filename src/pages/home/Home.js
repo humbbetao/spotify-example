@@ -1,7 +1,7 @@
 import React from 'react'
 import './home.css'
 
-import Search from 'components/Search'
+import Browser from 'components/Browser'
 import Sidebar from 'components/Sidebar'
 import List from 'components/List'
 import Header from 'components/Header'
@@ -39,7 +39,7 @@ export default class Home extends React.Component {
       <div className="main">
         <Sidebar>asjkdhaskjd</Sidebar>
         <Article>
-          <Search></Search>
+          <Browser></Browser>
           <List title="Álbuns buscados recentemente" />
         </Article>
       </div>

@@ -4,7 +4,7 @@ import Request from 'config/Request'
 import ActionTypes from './actionTypes'
 import ActionCreators from './actionCreators'
 
-function* searchAlbuns() {
+function* browserAlbuns() {
   try {
     const ids = 1
 
@@ -21,4 +21,4 @@ function* searchAlbuns() {
   }
 }
 
-export default all([takeLatest(ActionTypes.SEARCH_ALBUNS, searchAlbuns)])
+export default all([takeLatest(ActionTypes.SEARCH_ALBUNS, browserAlbuns)])

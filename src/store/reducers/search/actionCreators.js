@@ -1,6 +1,6 @@
 import ActionTypes from './actionTypes'
 export default {
-  searchAlbuns: function(query) {
+  browserAlbuns: function(query) {
     return {
       type: ActionTypes.SEARCH_ALBUNS,
       payload: { query },

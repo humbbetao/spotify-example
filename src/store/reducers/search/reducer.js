@@ -1,6 +1,6 @@
 import ActionTypes from './actionTypes'
 
-export default function searchReducer(state = {}, action) {
+export default function browserReducer(state = {}, action) {
   switch (action.type) {
     case ActionTypes.SEARCH_ALBUNS:
       return {

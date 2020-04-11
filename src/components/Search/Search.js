@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import Label from 'components/Label'
 import TextInput from 'components/TextInput'
-import SearchActions from 'store/reducers/search/actionCreators'
+import BrowserActions from 'store/reducers/browser/actionCreators'
 
-export default function Search() {
+export default function Browser() {
   const [query, setQuery] = useState('')
   const handleOnChangeQuery = e => {
     setQuery(e.target.value)
@@ -12,7 +12,7 @@ export default function Search() {
   const dispatch = useDispatch()
 
   const callbackWhenUserStopTypying = () => {
-    dispatch(SearchActions.searchAlbuns(query))
+    dispatch(BrowserActions.browserAlbuns(query))
   }
 
   return (
