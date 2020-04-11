@@ -16,9 +16,10 @@
 :root {
   --font-regular: 'Roboto';
   --font-bold: 'RobotoBold';
-  --primary-color: '#999999';
-  --secondary-color: '#FAFAFA';
-  --third-color: '#FFFFFF';
+  --primary-color: #999999;
+  --secondary-color: #fafafa;
+  --third-color: #ffffff;
+  --background-color: #1a1a1a;
 }
 
 body {
@@ -34,7 +35,7 @@ body {
   line-height: 28px;
   box-sizing: border-box;
 
-  background-color: #1a1a1a;
+  background-color: var(--background-color);
   font: var(--font-bold);
 
   margin: 0 auto;
