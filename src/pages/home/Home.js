@@ -40,7 +40,7 @@ export default class Home extends React.Component {
         <Sidebar>asjkdhaskjd</Sidebar>
         <Article>
           <Search></Search>
-          <List />
+          <List title="Álbuns buscados recentemente" />
         </Article>
       </div>
     )

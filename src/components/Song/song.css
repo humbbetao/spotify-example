@@ -1,0 +1,21 @@
+li {
+  width: 250px;
+  height: 250px;
+
+  display: block;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.image-song {
+  width: 80%;
+  height: 80%;
+  min-width: 150px;
+  min-height: 150px;
+  max-width: 150px;
+  max-height: 150px;
+
+  background-color: var(--third-color);
+}

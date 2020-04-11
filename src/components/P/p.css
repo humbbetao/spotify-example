@@ -1,0 +1,7 @@
+p {
+  margin: 0;
+  border: 0;
+  color: var(--third-color);
+  padding: 8px 0;
+  font-family: Roboto;
+}

@@ -1,30 +1,13 @@
 import React from 'react'
+import P from 'components/P'
+import './song.css'
 
 export default function Song() {
   return (
-    <React.Fragment>
-      <div
-        style={{
-          width: '200px',
-          height: '200px',
-          backgroundColor: '#fff',
-          color: '#fff',
-        }}
-      ></div>
-      <p
-        style={{
-          color: '#fff',
-        }}
-      >
-        Nome do álbum
-      </p>
-      <p
-        style={{
-          color: '#fff',
-        }}
-      >
-        Nome do artista
-      </p>
-    </React.Fragment>
+    <li>
+      <div className="image-song"></div>
+      <P>Nome do álbum</P>
+      <P>Nome do artista</P>
+    </li>
   )
 }
