@@ -1,7 +1,7 @@
 header {
   width: 100%;
   box-sizing: border-box;
-  height: 200px;
+  height: 150px;
 }
 
 header > div {
@@ -11,7 +11,7 @@ header > div {
 article {
   width: 100%;
   box-sizing: border-box;
-  min-height: calc(100% - 200px);
+  min-height: calc(100% - 150px);
 }
 
 article > div {
