@@ -11,7 +11,11 @@ export default function Search() {
   return (
     <React.Fragment>
       <Label color="white">Busque por artistas, álbum ou músicas</Label>
-      <TextInput value={query} onChange={handleOnChangeQuery}></TextInput>
+      <TextInput
+        value={query}
+        onChange={handleOnChangeQuery}
+        placeholder="Comece a escrever..."
+      ></TextInput>
     </React.Fragment>
   )
 }

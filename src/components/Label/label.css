@@ -1,3 +1,4 @@
 label {
-  color: #fff;
+  color: var(--third-color);
+  font-family: Roboto;
 }
