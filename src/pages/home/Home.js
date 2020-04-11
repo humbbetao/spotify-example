@@ -36,15 +36,13 @@ export default class Home extends React.Component {
   }
   render() {
     return (
-      <React.Fragment>
-        <Header>
-          <Search></Search>
-        </Header>
+      <div className="main">
         <Sidebar>asjkdhaskjd</Sidebar>
         <Article>
+          <Search></Search>
           <List />
         </Article>
-      </React.Fragment>
+      </div>
     )
   }
 }

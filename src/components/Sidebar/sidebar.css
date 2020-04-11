@@ -1,5 +1,7 @@
-.nav {
+nav {
   width: 200px;
-  height: 100%;
-  background-color: #fff;
+  background-color: #000;
+  float: left;
+  padding: 16px;
+  box-sizing: border-box;
 }
