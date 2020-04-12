@@ -9,17 +9,18 @@ module.exports = {
   entry: path.resolve(__dirname, './src/app'),
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js',
+    filename: 'bundle.[hash].js',
+    publicPath: '/',
   },
   devServer: {
-    contentBase: path.join(__dirname, 'build'),
-    compress: true,
+    publicPath: '/',
     port: 3000,
-    hot: true,
-    open: true,
     historyApiFallback: true,
+    open: true,
+    hot: true,
   },
   mode: 'development',
+  // devtool: 'inline-source-map',
   module: {
     rules: [
       {

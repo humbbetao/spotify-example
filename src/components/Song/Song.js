@@ -8,7 +8,7 @@ export default function Song({ album = { image: [] } }) {
   // console.log(album)
   const history = useHistory()
   if (!album) return
-  const handleOnClickOnSong = () => history.push(`/albums/${album.name}`)
+  const handleOnClickOnSong = () => history.replace(`/albums/${album.name}`)
   return (
     <li onClick={handleOnClickOnSong}>
       <picture>

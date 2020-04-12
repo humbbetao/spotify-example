@@ -9,4 +9,8 @@ export default class BrowserServices {
     const params = { q: query, type: defaultType, limit: limitOfAlbums }
     return request.get(domain, params).then(response => response)
   }
+  static searchSongsByAlbumId = id => {
+    const params = { q: id }
+    return request.get(domain, params).then(response => response)
+  }
 }
