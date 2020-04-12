@@ -2,11 +2,15 @@ import { connect } from 'react-redux'
 import Home from './Home'
 import TokenActionsCreators from 'store/reducers/token/actionCreators'
 
+function mapStateToProps(state) {
+  return {
+    query: state.album.query,
+    hasAlbumsRecentlySearched: state.album.hasAlbumsRecentlySearched,
+  }
+}
+
 function mapDispatchToProps(dispatch) {
   return {
-    getToken: () => {
-      dispatch(TokenActionsCreators.getToken())
-    },
     setToken: token => {
       dispatch(TokenActionsCreators.setToken(token))
     },
@@ -16,4 +20,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

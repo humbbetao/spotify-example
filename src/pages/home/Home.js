@@ -1,18 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './home.css'
 import Browser from 'components/Browser'
 import Sidebar from 'components/Sidebar'
 import List from 'components/List'
 import Article from 'components/Article'
 
-export default class Home extends React.Component {
-  componentDidMount() {
-    this.getToken()
-  }
-  getToken = () => {
+export default function Home(props) {
+  const getToken = () => {
     const able = true
     if (able) {
-      const { getToken, setToken, setError, ...props } = this.props
+      const { setToken, setError } = props
       try {
         const hashParams = {}
         let e
@@ -32,15 +29,28 @@ export default class Home extends React.Component {
       }
     }
   }
-  render() {
-    return (
-      <div className="main">
-        <Sidebar>asjkdhaskjd</Sidebar>
-        <Article>
-          <Browser></Browser>
-          <List title="Álbuns buscados recentemente" />
-        </Article>
-      </div>
-    )
+
+  useEffect(getToken, [])
+  const getTitle = () => {
+    const { hasAlbumsRecentlySearched, query } = props
+    if (!query) {
+      return ''
+    }
+    if (query || hasAlbumsRecentlySearched) {
+      return `Resultados encontrados para "${query}"`
+    }
+    return 'Álbuns buscados recentemente'
   }
+
+  const title = getTitle()
+
+  return (
+    <div className="main">
+      <Sidebar>asjkdhaskjd</Sidebar>
+      <Article>
+        <Browser></Browser>
+        <List title={title} />
+      </Article>
+    </div>
+  )
 }

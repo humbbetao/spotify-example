@@ -1,5 +1,5 @@
 import ActionTypes from './actionTypes'
-export default function tokenReducer(state = {}, action) {
+export default function reducer(state = {}, action) {
   switch (action.type) {
     case ActionTypes.GET_TOKEN_SUCCESS:
       return {

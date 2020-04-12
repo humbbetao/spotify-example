@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import Label from 'components/Label'
 import TextInput from 'components/TextInput'
-import BrowserActions from 'store/reducers/browser/actionCreators'
+import AlbumActions from 'store/reducers/album/actionCreators'
 
 export default function Browser() {
   const [query, setQuery] = useState('')
@@ -12,7 +12,7 @@ export default function Browser() {
   const dispatch = useDispatch()
 
   const callbackWhenUserStopTypying = () => {
-    dispatch(BrowserActions.browserAlbuns(query))
+    dispatch(AlbumActions.search(query))
   }
 
   return (
