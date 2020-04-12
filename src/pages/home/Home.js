@@ -5,7 +5,7 @@ import Sidebar from 'components/Sidebar'
 import List from 'components/List'
 import Article from 'components/Article'
 import { useSelector } from 'react-redux'
-import { useLocation } from 'react-router-dom'
+import constants from 'config/constants'
 
 function useQuery(search) {
   return new URLSearchParams(search)
@@ -18,12 +18,20 @@ export default function Home(props) {
       const { setToken, setError } = props
       try {
         let query = useQuery(props.location.search)
-        const access_token = query.get('code')
-        if (!access_token) {
+        const accessTokenFromQuery = query.get('code')
+        var accessTokenFromLocalStorage = localStorage.getItem(
+          constants.ACCESS_TOKEN
+        )
+
+        if (!accessTokenFromQuery && !accessTokenFromLocalStorage) {
           const spotify = `${process.env.AUTH_API}/authorize?client_id=${process.env.CLIENT_ID}&scope=playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20user-read-recently-played%20playlist-modify-private%20ugc-image-upload%20user-follow-modify%20user-follow-read%20user-library-read%20user-library-modify%20user-read-private%20user-read-email%20user-top-read%20user-read-playback-state&response_type=code&redirect_uri=${process.env.REDIRECT_URI}/callback`
           window.location.href = spotify
+          // props.history.redirect('/')
+          // props.history.push(spotify)
         } else {
-          setToken(access_token)
+          setToken(accessTokenFromQuery || accessTokenFromLocalStorage)
+          props.history.replace('/')
+          // window.location.href = process.env.REDIRECT_URI
         }
       } catch (e) {
         console.log(e)
