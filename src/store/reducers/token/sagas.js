@@ -5,7 +5,7 @@ import ActionTypes from './actionTypes'
 
 function* setTokenEffects(action) {
   const token = yield select(state => state.token.token)
-  console.log('token', action.payload.token)
+  // console.log('token', action.payload.token)
   api.addRequestTransform(request => {
     request.headers['Authorization'] = `Bearer ${token}`
   })

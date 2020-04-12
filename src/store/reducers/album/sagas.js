@@ -5,12 +5,24 @@ import ActionCreators from './actionCreators'
 import BrowserServices from 'services/BrowserServices'
 
 function* searchAlbums(action) {
-  debugger
   const { query } = action.payload
+  if (!query) return
+
+  const history = yield select(state => state.album.history)
+  const queryIndex = history.findIndex(querys => querys.query === query)
+  const hasAlreadySearched = queryIndex != -1
+
+  if (hasAlreadySearched) {
+    debugger
+    yield put(
+      ActionCreators.setAlbumsbyHistory(history[queryIndex].albums, queryIndex)
+    )
+    return
+  }
+
   try {
     const response = yield BrowserServices.searchByAlbuns(query)
     if (response.ok) {
-      debugger
       const albums = response.data.albums.items
       yield put(ActionCreators.setAlbums(albums))
     } else {

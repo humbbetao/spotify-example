@@ -2,9 +2,10 @@ import ActionTypes from './actionTypes'
 
 const INITIAL_STATE = {
   query: '',
-  hasAlbumsRecentlySearched: false,
+  history: [],
   albums: [],
 }
+
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case ActionTypes.SEARCH_ALBUMS:
@@ -13,17 +14,37 @@ export default function reducer(state = INITIAL_STATE, action) {
         query: action.payload.query,
       }
     case ActionTypes.SEARCH_ALBUMS_SUCCESS:
-      debugger
       return {
         ...state,
         albums: action.payload.albums,
-        hasAlbumsRecentlySearched: true,
+        history: [
+          ...state.history,
+          { query: state.query, albums: action.payload.albums },
+        ],
+      }
+    case ActionTypes.SET_ALBUMS_BY_HISTORY:
+      const historyClone = [...state.history]
+      historyClone.splice(action.payload.index, 1)
+
+      return {
+        ...state,
+        albums: action.payload.albums,
+        history: [
+          ...state.history,
+          { query: state.query, albums: action.payload.albums },
+        ],
       }
 
     case ActionTypes.SEARCH_ALBUMS_ERROR:
       return {
         ...state,
         albunsError: action.payload.albunsError,
+      }
+    case ActionTypes.CLEAR_ALBUMS:
+      return {
+        ...state,
+        query: INITIAL_STATE.query,
+        albums: INITIAL_STATE.albums,
       }
 
     default:

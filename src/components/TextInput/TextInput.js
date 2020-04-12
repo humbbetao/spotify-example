@@ -1,16 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './textInput.css'
 
 export default function TextInput({
   value,
   placeholder = '',
   onChange,
+  onBlur,
   callback,
 }) {
   const interval = 500 //2s
   const checkWhenUserStopTypying = () => {
-    if (!value) return
-
     const timeout = setTimeout(callback, interval)
 
     return () => clearTimeout(timeout)
@@ -23,6 +22,7 @@ export default function TextInput({
       type="text"
       className="text-input"
       onChange={onChange}
+      onBlur={onBlur}
       value={value}
       placeholder={placeholder}
     ></input>

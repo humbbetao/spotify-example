@@ -5,7 +5,6 @@ import TokenActionsCreators from 'store/reducers/token/actionCreators'
 function mapStateToProps(state) {
   return {
     query: state.album.query,
-    hasAlbumsRecentlySearched: state.album.hasAlbumsRecentlySearched,
   }
 }
 

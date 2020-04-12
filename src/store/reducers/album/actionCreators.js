@@ -8,7 +8,6 @@ export default {
   },
 
   setAlbums: function(albums) {
-    debugger
     return {
       type: ActionTypes.SEARCH_ALBUMS_SUCCESS,
       payload: { albums },
@@ -19,6 +18,17 @@ export default {
     return {
       type: ActionTypes.SEARCH_ALBUMS_ERROR,
       payload: { error },
+    }
+  },
+  clear: function() {
+    return {
+      type: ActionTypes.CLEAR_ALBUMS,
+    }
+  },
+  setAlbumsbyHistory: function(albums, index) {
+    return {
+      type: ActionTypes.SET_ALBUMS_BY_HISTORY,
+      payload: { albums, index },
     }
   },
 }

@@ -4,6 +4,7 @@ import Browser from 'components/Browser'
 import Sidebar from 'components/Sidebar'
 import List from 'components/List'
 import Article from 'components/Article'
+import { useSelector } from 'react-redux'
 
 export default function Home(props) {
   const getToken = () => {
@@ -31,13 +32,24 @@ export default function Home(props) {
   }
 
   useEffect(getToken, [])
+
+  const { albums, query, history } = useSelector(state => ({
+    albums: state.album.albums,
+    query: state.album.query,
+    history: state.album.history,
+  }))
+
   const getTitle = () => {
-    const { hasAlbumsRecentlySearched, query } = props
+    if (query) {
+      if (albums) {
+        return `Resultados encontrados para "${query}"`
+      }
+    }
+    if (history) {
+      return 'Álbuns buscados recentemente'
+    }
     if (!query) {
       return ''
-    }
-    if (query || hasAlbumsRecentlySearched) {
-      return `Resultados encontrados para "${query}"`
     }
     return 'Álbuns buscados recentemente'
   }
@@ -45,12 +57,26 @@ export default function Home(props) {
   const title = getTitle()
 
   return (
-    <div className="main">
-      <Sidebar>asjkdhaskjd</Sidebar>
+    <main>
+      <Sidebar></Sidebar>
       <Article>
         <Browser></Browser>
-        <List title={title} />
+        {query ? (
+          <List
+            title={title}
+            albums={(history[history.length - 1] || {}).albums}
+          />
+        ) : (
+          history.map(item => (
+            <List
+              key={item.query}
+              title={title}
+              albums={item.albums}
+              query={item.query}
+            />
+          ))
+        )}
       </Article>
-    </div>
+    </main>
   )
 }

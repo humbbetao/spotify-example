@@ -2,19 +2,21 @@ import React from 'react'
 import P from 'components/P'
 import './song.css'
 import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 export default function Song({ album = { image: [] } }) {
-  console.log(album)
+  // console.log(album)
   const history = useHistory()
   if (!album) return
-  const handleOnClickOnSong = () => history.push('/albums/rihanna')
+  const handleOnClickOnSong = () => history.push(`/albums/${album.name}`)
   return (
     <li onClick={handleOnClickOnSong}>
       <picture>
         {album.images.map(image => (
           <source
+            key={image.url}
             media={`(min-width: ${image.width * 3}px)`}
-            srcset={image.url}
+            srcSet={image.url}
             alt={album.name}
           />
         ))}
