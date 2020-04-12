@@ -12,8 +12,10 @@ export default function reducer(state = INITIAL_STATE, action) {
         ...state,
       }
     case ActionTypes.SEARCH_SONGS_SUCCESS:
+      debugger
       return {
         ...state,
+        songs: [...action.payload.songs],
       }
 
     case ActionTypes.SEARCH_SONGS_ERROR:

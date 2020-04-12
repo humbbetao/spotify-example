@@ -9,6 +9,13 @@ export default class SongItem extends React.Component {
     this.audio = null
   }
 
+  componentWillUnmount() {
+    if (this.audio) {
+      this.audio.pause()
+    }
+    this.audio = null
+  }
+
   stopSong = () => {
     if (this.audio) {
       // this.props.stopSong()
@@ -42,7 +49,6 @@ export default class SongItem extends React.Component {
       // playSong(song.track)
       this.audio = new Audio(song.preview_url)
       this.audio.play()
-      console.log(this.audio)
     } else {
       // stopSong()
       this.audio.pause()
@@ -54,7 +60,6 @@ export default class SongItem extends React.Component {
 
   render() {
     const { song, id } = this.props
-    // console.log(song, "sonf")
     return (
       <li className="song-item" onClick={this.audioControl}>
         <div style={{ width: '80%' }}>

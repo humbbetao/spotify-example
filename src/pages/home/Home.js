@@ -17,20 +17,27 @@ export default function Home(props) {
     if (able) {
       const { setToken, setError } = props
       try {
-        let query = useQuery(props.location.search)
-        const accessTokenFromQuery = query.get('code')
-        var accessTokenFromLocalStorage = localStorage.getItem(
-          constants.ACCESS_TOKEN
-        )
+        let hashParams = {}
+        let e,
+          r = /([^&;=]+)=?([^&;]*)/g,
+          q = window.location.hash.substring(1)
+        while ((e = r.exec(q))) {
+          hashParams[e[1]] = decodeURIComponent(e[2])
+        }
 
-        if (!accessTokenFromQuery && !accessTokenFromLocalStorage) {
-          const spotify = `${process.env.AUTH_API}/authorize?client_id=${process.env.CLIENT_ID}&scope=playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20user-read-recently-played%20playlist-modify-private%20ugc-image-upload%20user-follow-modify%20user-follow-read%20user-library-read%20user-library-modify%20user-read-private%20user-read-email%20user-top-read%20user-read-playback-state&response_type=code&redirect_uri=${process.env.REDIRECT_URI}/callback`
+        // const accessTokenFromQuery = query.get('code')
+        // var accessTokenFromLocalStorage = localStorage.getItem(
+        //   constants.ACCESS_TOKEN
+        // )
+
+        if (!hashParams.access_token) {
+          const spotify = `${process.env.AUTH_API}/authorize?client_id=${process.env.CLIENT_ID}&scope=playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20user-read-recently-played%20playlist-modify-private%20ugc-image-upload%20user-follow-modify%20user-follow-read%20user-library-read%20user-library-modify%20user-read-private%20user-read-email%20user-top-read%20user-read-playback-state&response_type=token&redirect_uri=${process.env.REDIRECT_URI}/callback`
           window.location.href = spotify
           // props.history.redirect('/')
           // props.history.push(spotify)
         } else {
-          setToken(accessTokenFromQuery || accessTokenFromLocalStorage)
-          props.history.replace('/')
+          setToken(hashParams.access_token)
+          // props.history.replace('/')
           // window.location.href = process.env.REDIRECT_URI
         }
       } catch (e) {
@@ -38,7 +45,6 @@ export default function Home(props) {
         setError(e)
       }
     }
-    console.log(props)
     if (!props.match.params.artist) return
     props.searchAlbumByArtist(props.match.params.artist)
   }

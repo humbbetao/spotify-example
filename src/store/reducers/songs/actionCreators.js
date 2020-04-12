@@ -7,10 +7,10 @@ export default {
     }
   },
 
-  setSongs: function(albums) {
+  setSongs: function(songs) {
     return {
       type: ActionTypes.SEARCH_SONGS_SUCCESS,
-      payload: { albums },
+      payload: { songs },
     }
   },
 

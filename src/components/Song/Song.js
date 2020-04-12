@@ -5,10 +5,12 @@ import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 export default function Song({ album = { image: [] } }) {
-  // console.log(album)
   const history = useHistory()
+  const artist = album.artists[album.artists.length - 1].name
+
   if (!album) return
-  const handleOnClickOnSong = () => history.replace(`/albums/${album.id}`)
+  const handleOnClickOnSong = () =>
+    history.push(`/albums/${artist}/${album.id}`)
   return (
     <li className="album-item" onClick={handleOnClickOnSong}>
       <picture>
@@ -27,7 +29,7 @@ export default function Song({ album = { image: [] } }) {
         />
       </picture>
 
-      <P>{album.artists[album.artists.length - 1].name}</P>
+      <P>{artist}</P>
       <P>{album.name}</P>
     </li>
   )

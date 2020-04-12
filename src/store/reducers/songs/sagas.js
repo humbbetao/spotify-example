@@ -8,9 +8,11 @@ function* searchSongs(action) {
     const response = yield BrowserServices.searchSongsByAlbumId(
       action.payload.albumID
     )
+
     if (response.ok) {
-      const albums = response.data.albums.items
-      yield put(ActionCreators.setSongs(albums))
+      debugger
+      const songs = response.data.tracks.items
+      yield put(ActionCreators.setSongs(songs))
     } else {
       console.log(response.error)
       yield put(ActionCreators.setSongsError(response.error))

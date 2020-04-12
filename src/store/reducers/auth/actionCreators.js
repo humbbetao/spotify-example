@@ -17,4 +17,15 @@ export default {
       payload: { error },
     }
   },
+  requestRefreshToken: function() {
+    return {
+      type: ActionTypes.REQUEST_REFRESH_TOKEN,
+    }
+  },
+  getRefreshToken: function(token) {
+    return {
+      type: ActionTypes.GET_REFRESH_TOKEN,
+      payload: { token },
+    }
+  },
 }

@@ -4,8 +4,7 @@ import './song.css'
 import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-export default function SongBig({ album = { image: [] } }) {
-  // console.log(album)
+export default function SongBig({ album = { images: [] } }) {
   const history = useHistory()
   console.log(album)
   if (!album) return
@@ -21,11 +20,13 @@ export default function SongBig({ album = { image: [] } }) {
             alt={album.name}
           />
         ))}
-        <img
-          className="image-song"
-          src={album.images[0].url}
-          alt={album.name}
-        />
+        {album.images.length > 0 && (
+          <img
+            className="image-song"
+            src={album.images[0].url}
+            alt={album.name}
+          />
+        )}
       </picture>
 
       <P>{album.artists[album.artists.length - 1].name}</P>

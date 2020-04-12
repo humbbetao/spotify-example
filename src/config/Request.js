@@ -25,9 +25,7 @@ const Request = {
     if (!url || !data) {
       throw new Error('Missing URL parameter and Missing DATA parameter ')
     }
-    return api.post(url, data, axiosConfig).then(data => {
-      return data
-    })
+    return api.post(url, data, axiosConfig).then(data => data)
   },
   put: (url, data, axiosConfig) => {
     if (!url || !data) {
