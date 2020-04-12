@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import Home from './Home'
 import TokenActionsCreators from 'store/reducers/token/actionCreators'
+import AlbumActions from 'store/reducers/album/actionCreators'
 
 function mapStateToProps(state) {
   return {
@@ -8,13 +9,16 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, ownProps) {
   return {
     setToken: token => {
       dispatch(TokenActionsCreators.setToken(token))
     },
     setError: error => {
       dispatch(TokenActionsCreators.setError(error))
+    },
+    searchAlbumByArtist: artist => {
+      dispatch(AlbumActions.search(artist))
     },
   }
 }

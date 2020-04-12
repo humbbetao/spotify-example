@@ -4,7 +4,7 @@ import Browser from 'components/Browser'
 import Sidebar from 'components/Sidebar'
 import List from 'components/List'
 import Article from 'components/Article'
-import { useSelector } from 'react-redux'
+import { useSelector, useDisp } from 'react-redux'
 
 export default function Home(props) {
   const getToken = () => {
@@ -29,6 +29,9 @@ export default function Home(props) {
         setError(e)
       }
     }
+    console.log(props)
+    if (!props.match.params.artist) return
+    props.searchAlbumByArtist(props.match.params.artist)
   }
 
   useEffect(getToken, [])

@@ -11,10 +11,12 @@ const App = () => (
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
-        <Route path="/albums/:artist" component={Album}></Route>
-        <Route exact path={['/', '/callback']}>
-          <Home></Home>
-        </Route>
+        <Route exact path="/albums/:artist/:album" component={Album}></Route>
+        <Route
+          exact
+          path={['/', '/callback', '/albums/:artist']}
+          component={Home}
+        ></Route>
         <Route path="*">
           <NoMatch />
         </Route>

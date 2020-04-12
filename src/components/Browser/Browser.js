@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Label from 'components/Label'
 import TextInput from 'components/TextInput'
 import AlbumActions from 'store/reducers/album/actionCreators'
 
 export default function Browser() {
+  debugger
   const [query, setQuery] = useState('')
+  let queryByParams = useSelector(state => state.album.query)
+
+  useEffect(() => {
+    setQuery(queryByParams)
+  }, [queryByParams])
+
   const handleOnChangeQuery = e => {
-    console.log('query', query, e.target.value)
     setQuery(e.target.value)
   }
   const dispatch = useDispatch()
