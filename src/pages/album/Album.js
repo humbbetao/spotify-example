@@ -4,15 +4,23 @@ import Browser from 'components/Browser'
 import Sidebar from 'components/Sidebar'
 import Label from 'components/Label'
 import Article from 'components/Article'
-import { useSelector } from 'react-redux'
+import SongBig from 'components/SongBig'
 
-export default function Album(props) {
+import mock from './mock'
+import mockAlbum from 'components/List/mock'
+import { useSelector } from 'react-redux'
+import SongList from 'components/SongList'
+
+export default function Album({ getSongs }) {
+  const album = useSelector(state => state.album)
   return (
     <main>
       <Sidebar></Sidebar>
       <Article>
-        <Label>asdkjasdjnasjkdnas</Label>
-        {/* <Browser></Browser> */}
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <SongBig album={mockAlbum.albums.items[1]}></SongBig>
+          <SongList songs={mock.tracks.items}></SongList>
+        </div>
       </Article>
     </main>
   )

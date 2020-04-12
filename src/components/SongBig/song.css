@@ -1,0 +1,19 @@
+span {
+  width: 600px;
+  height: 600px;
+  display: block;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.image-song {
+  width: 80%;
+  height: 80%;
+  min-width: 400px;
+  min-height: 400px;
+  max-width: 600px;
+  max-height: 600px;
+
+  background-color: var(--third-color);
+}

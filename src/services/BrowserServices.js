@@ -7,10 +7,10 @@ const limitOfAlbums = 10
 export default class BrowserServices {
   static searchByAlbuns = query => {
     const params = { q: query, type: defaultType, limit: limitOfAlbums }
-    return request.get(domain, params).then(response => response)
+    return request.get(`${domain}/search`, params).then(response => response)
   }
+
   static searchSongsByAlbumId = id => {
-    const params = { q: id }
-    return request.get(domain, params).then(response => response)
+    return request.get(`${domain}/albums/${id}`, {}).then(response => response)
   }
 }

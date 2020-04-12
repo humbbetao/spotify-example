@@ -1,1 +1,1 @@
-export default 'SONG'
+export default 'SONGS'

@@ -4,13 +4,14 @@ import './song.css'
 import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-export default function Song({ album = { image: [] } }) {
+export default function SongBig({ album = { image: [] } }) {
   // console.log(album)
   const history = useHistory()
+  console.log(album)
   if (!album) return
   const handleOnClickOnSong = () => history.replace(`/albums/${album.id}`)
   return (
-    <li className="album-item" onClick={handleOnClickOnSong}>
+    <span onClick={handleOnClickOnSong}>
       <picture>
         {album.images.map(image => (
           <source
@@ -22,13 +23,13 @@ export default function Song({ album = { image: [] } }) {
         ))}
         <img
           className="image-song"
-          src={album.images[album.images.length - 1].url}
+          src={album.images[0].url}
           alt={album.name}
         />
       </picture>
 
       <P>{album.artists[album.artists.length - 1].name}</P>
       <P>{album.name}</P>
-    </li>
+    </span>
   )
 }

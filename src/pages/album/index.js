@@ -1,23 +1,20 @@
 import { connect } from 'react-redux'
 import Album from './Album'
-// import TokenActionsCreators from 'store/reducers/token/actionCreators'
+import SongActions from 'store/reducers/songs/actionCreators'
 
-// function mapStateToProps(state) {
-//   return {
-//     query: state.album.query,
-//   }
-// }
+function mapStateToProps(state) {
+  return {
+    album: state.album,
+  }
+}
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     setToken: token => {
-//       dispatch(TokenActionsCreators.setToken(token))
-//     },
-//     setError: error => {
-//       dispatch(TokenActionsCreators.setError(error))
-//     },
-//   }
-// }
+function mapDispatchToProps(dispatch, ownProps) {
+  return {
+    getSongs: () => {
+      const artist = ownProps.match.params.artist
+      dispatch(SongActions.getSongs(artist))
+    },
+  }
+}
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Home)
-export default Album
+export default connect(mapStateToProps, mapDispatchToProps)(Album)

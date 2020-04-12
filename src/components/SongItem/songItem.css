@@ -1,0 +1,22 @@
+.song-item {
+  color: var(--third-color);
+  width: 100%;
+  height: 30px;
+  box-sizing: border-box;
+  font-family: var(--font-bold);
+  display: flex;
+  justify-content: space-between;
+}
+
+.song-timer {
+  text-align: right;
+}
+
+.color {
+  color: var(--primary-color);
+}
+
+.song-number {
+  display: inline-flex;
+  width: 50px;
+}

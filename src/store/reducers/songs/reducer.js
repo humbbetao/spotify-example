@@ -15,10 +15,6 @@ export default function reducer(state = INITIAL_STATE, action) {
       return {
         ...state,
       }
-    case ActionTypes.SET_SONGS_BY_HISTORY:
-      return {
-        ...state,
-      }
 
     case ActionTypes.SEARCH_SONGS_ERROR:
       return {

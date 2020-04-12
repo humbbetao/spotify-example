@@ -1,20 +1,20 @@
 import ActionTypes from './actionTypes'
 export default {
-  search: function(query) {
+  getSongs: function(albumID) {
     return {
       type: ActionTypes.SEARCH_SONGS,
-      payload: { query },
+      payload: { albumID },
     }
   },
 
-  setAlbums: function(albums) {
+  setSongs: function(albums) {
     return {
       type: ActionTypes.SEARCH_SONGS_SUCCESS,
       payload: { albums },
     }
   },
 
-  setAlbumsError: function(error) {
+  setSongsError: function(error) {
     return {
       type: ActionTypes.SEARCH_SONGS_ERROR,
       payload: { error },

@@ -13,7 +13,6 @@ function* searchAlbums(action) {
   const hasAlreadySearched = queryIndex != -1
 
   if (hasAlreadySearched) {
-    debugger
     yield put(
       ActionCreators.setAlbumsbyHistory(history[queryIndex].albums, queryIndex)
     )

@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 
 export default function Home(props) {
   const getToken = () => {
-    const able = true
+    const able = false
     if (able) {
       const { setToken, setError } = props
       try {
