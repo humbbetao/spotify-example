@@ -20,7 +20,7 @@ export default {
       payload: { error },
     }
   },
-  clear: function() {
+  clearAlbum: function() {
     return {
       type: ActionTypes.CLEAR_ALBUMS,
     }

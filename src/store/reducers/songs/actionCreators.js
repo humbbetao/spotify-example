@@ -25,4 +25,15 @@ export default {
       type: ActionTypes.CLEAR_SONGS,
     }
   },
+  setAlbum: function(album) {
+    return {
+      type: ActionTypes.SET_ALBUM,
+      payload: { album },
+    }
+  },
+  clearAlbum: function() {
+    return {
+      type: ActionTypes.CLEAR_ALBUM,
+    }
+  },
 }

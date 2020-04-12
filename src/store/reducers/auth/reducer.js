@@ -1,12 +1,19 @@
 import ActionTypes from './actionTypes'
-export default function reducer(state = {}, action) {
+const INITIAL_STATE = {
+  isLogged: false,
+}
+export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case ActionTypes.GET_TOKEN_SUCCESS:
       return {
         ...state,
-        token: action.payload.token,
+        isLogged: true,
       }
-
+    case ActionTypes.GET_TOKEN_ERROR:
+      return {
+        ...state,
+        isLogged: false,
+      }
     default:
       return state
   }

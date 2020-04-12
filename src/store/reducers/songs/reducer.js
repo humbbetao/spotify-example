@@ -12,7 +12,11 @@ export default function reducer(state = INITIAL_STATE, action) {
         ...state,
       }
     case ActionTypes.SEARCH_SONGS_SUCCESS:
-      debugger
+      console.log([...action.payload.songs])
+      console.log({
+        ...state,
+        songs: [...action.payload.songs],
+      })
       return {
         ...state,
         songs: [...action.payload.songs],
@@ -23,10 +27,18 @@ export default function reducer(state = INITIAL_STATE, action) {
         ...state,
       }
     case ActionTypes.CLEAR_SONGS:
+    case ActionTypes.CLEAR_ALBUM:
       return {
         ...state,
+        songs: INITIAL_STATE.songs,
+        album: INITIAL_STATE.album,
       }
 
+    case ActionTypes.SEARCH_SONGS_SUCCESS:
+      return {
+        ...state,
+        album: { ...action.payload.album },
+      }
     default:
       return state
   }

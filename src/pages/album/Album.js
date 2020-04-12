@@ -8,7 +8,7 @@ import SongBig from 'components/SongBig'
 
 import { useSelector, useDispatch } from 'react-redux'
 import SongList from 'components/SongList'
-import { useLocation, useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import SongsActions from '../../store/reducers/songs/actionCreators'
 export default function Album() {
   const params = useParams()
@@ -29,11 +29,15 @@ export default function Album() {
   })
 
   if (!songs || !album) return null
-
+  const history = useHistory()
+  const goBack = () => history.goBack()
+  console.log(history)
   return (
     <main>
       <Sidebar></Sidebar>
       <Article>
+        <Label onClick={goBack}>Voltar</Label>
+
         <div style={{ display: 'flex', flexDirection: 'row' }}>
           <SongBig album={album}></SongBig>
           <SongList songs={songs.songs}></SongList>

@@ -2,13 +2,17 @@ import React from 'react'
 import P from 'components/P'
 import './song.css'
 import { useHistory } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-
+import { useSelector, useDispatch } from 'react-redux'
+import SongActions from 'store/reducers/songs/actionCreators'
 export default function SongBig({ album = { images: [] } }) {
   const history = useHistory()
+  const dispatch = useDispatch()
   console.log(album)
   if (!album) return
-  const handleOnClickOnSong = () => history.replace(`/albums/${album.id}`)
+  const handleOnClickOnSong = () => {
+    dispatch(SongActions.setAlbum(album))
+    history.replace(`/albums/${album.id}`)
+  }
   return (
     <span onClick={handleOnClickOnSong}>
       <picture>

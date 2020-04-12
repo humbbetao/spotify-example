@@ -5,23 +5,24 @@ import TextInput from 'components/TextInput'
 import AlbumActions from 'store/reducers/album/actionCreators'
 
 export default function Browser() {
-  const [query, setQuery] = useState('')
   let queryByParams = useSelector(state => state.album.query)
+
+  const [query, setQuery] = useState(queryByParams || '')
 
   useEffect(() => {
     setQuery(queryByParams)
   }, [queryByParams])
 
+  useEffect(() => {
+    if (!query || query.length === 0) {
+      dispatch(AlbumActions.clearAlbum())
+    }
+  }, [query])
+
   const handleOnChangeQuery = e => {
     setQuery(e.target.value)
   }
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    if (!query || query.length === 0) {
-      dispatch(AlbumActions.clear())
-    }
-  }, [query])
 
   const callbackWhenUserStopTypying = () => {
     if (!query) return
