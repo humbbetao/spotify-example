@@ -38,7 +38,6 @@ export default class SongItem extends React.Component {
 
   audioControl = () => {
     const { song } = this.props
-    debugger
     if (!this.audio) {
       // playSong(song.track)
       this.audio = new Audio(song.preview_url)

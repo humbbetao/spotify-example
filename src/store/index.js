@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from 'redux'
-import token from './reducers/token'
+import token from './reducers/auth'
 import album from './reducers/album'
 import songs from './reducers/songs'
 

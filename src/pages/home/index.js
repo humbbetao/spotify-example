@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Home from './Home'
-import TokenActionsCreators from 'store/reducers/token/actionCreators'
+import TokenActionsCreators from 'store/reducers/auth/actionCreators'
 import AlbumActions from 'store/reducers/album/actionCreators'
 
 function mapStateToProps(state) {

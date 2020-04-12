@@ -5,7 +5,6 @@ import TextInput from 'components/TextInput'
 import AlbumActions from 'store/reducers/album/actionCreators'
 
 export default function Browser() {
-  debugger
   const [query, setQuery] = useState('')
   let queryByParams = useSelector(state => state.album.query)
 

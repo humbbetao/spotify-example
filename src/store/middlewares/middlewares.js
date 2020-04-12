@@ -1,6 +1,7 @@
-import sagaMiddleware from './sagaMiddleware';
+import sagaMiddleware from './sagaMiddleware'
+import authMiddleware from './authMiddleware'
 
 // middlewares
-const middlewares = [sagaMiddleware];
+const middlewares = [sagaMiddleware]
 
-export default middlewares;
+export default middlewares
