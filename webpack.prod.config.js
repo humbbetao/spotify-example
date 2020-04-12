@@ -9,7 +9,10 @@ module.exports = {
   entry: path.resolve(__dirname, './src/app'),
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js',
+    // filename: 'bundle.[hash].js',
+    filename: '[name].[hash].js',
+    publicPath: '/',
+    // chunkFilename: '[name].[hash].js',
   },
   mode: 'production',
   module: {
@@ -38,6 +41,11 @@ module.exports = {
   },
   optimization: {
     minimize: true,
+    splitChunks: {
+      // include all types of chunks
+      chunks: 'initial',
+      name: true,
+    },
     minimizer: [
       new TerserPlugin({
         terserOptions: {

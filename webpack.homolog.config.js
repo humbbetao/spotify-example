@@ -9,7 +9,8 @@ module.exports = {
   entry: path.resolve(__dirname, './src/app'),
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js',
+    filename: 'bundle.[hash].js',
+    publicPath: '/',
   },
   mode: 'production',
   module: {
