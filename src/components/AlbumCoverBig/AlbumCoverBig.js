@@ -36,7 +36,7 @@ export default function AlbumCoverBig({ album = { images: [] } }) {
         )}
       </picture>
 
-      <P>{album.artists[album.artists.length - 1].name}</P>
+      <P>{album.artists[0].name}</P>
       <P>{album.name}</P>
     </span>
   )
