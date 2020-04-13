@@ -1,15 +1,10 @@
 import React, { useEffect } from 'react'
-import './home.css'
 import Browser from 'components/Browser'
 import Sidebar from 'components/Sidebar'
 import List from 'components/List'
 import Article from 'components/Article'
 import { useSelector } from 'react-redux'
-import constants from 'config/constants'
-
-function useQuery(search) {
-  return new URLSearchParams(search)
-}
+import './home.css'
 
 export default function Home(props) {
   const getToken = () => {
@@ -57,7 +52,7 @@ export default function Home(props) {
   const getTitle = () => {
     if (query) {
       if (albums) {
-        return `Resultados encontrados para "${query}"`
+        return `Resultados encontrados para "${query}":`
       }
     }
     if (history) {
@@ -73,9 +68,9 @@ export default function Home(props) {
 
   return (
     <main>
-      <Sidebar></Sidebar>
+      <Sidebar />
       <Article>
-        <Browser></Browser>
+        <Browser />
         {query ? (
           <List title={title} albums={(history[0] || {}).albums} />
         ) : (

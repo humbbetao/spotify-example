@@ -1,14 +1,16 @@
 import React from 'react'
 import P from 'components/P'
-import './song.css'
+import './albumCoverBig.css'
 import { useHistory } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import SongActions from 'store/reducers/songs/actionCreators'
-export default function SongBig({ album = { images: [] } }) {
+
+export default function AlbumCoverBig({ album = { images: [] } }) {
   const history = useHistory()
   const dispatch = useDispatch()
-  console.log(album)
   if (!album) return
+  console.log(album)
+
   const handleOnClickOnSong = () => {
     dispatch(SongActions.setAlbum(album))
     history.replace(`/albums/${album.id}`)
@@ -22,11 +24,12 @@ export default function SongBig({ album = { images: [] } }) {
             media={`(min-width: ${image.width * 3}px)`}
             srcSet={image.url}
             alt={album.name}
+            className="album-cover-big"
           />
         ))}
         {album.images.length > 0 && (
           <img
-            className="image-song"
+            className="album-cover-big"
             src={album.images[0].url}
             alt={album.name}
           />

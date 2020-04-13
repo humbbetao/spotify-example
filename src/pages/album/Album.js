@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
 import './album.css'
-import Browser from 'components/Browser'
 import Sidebar from 'components/Sidebar'
 import Label from 'components/Label'
 import Article from 'components/Article'
-import SongBig from 'components/SongBig'
+import AlbumCoverBig from 'components/AlbumCoverBig'
 
 import { useSelector, useDispatch } from 'react-redux'
 import SongList from 'components/SongList'
@@ -15,7 +14,6 @@ export default function Album() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log(location)
     dispatch(SongsActions.getSongs(params.album))
   }, [])
 
@@ -38,8 +36,8 @@ export default function Album() {
       <Article>
         <Label onClick={goBack}>Voltar</Label>
 
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
-          <SongBig album={album}></SongBig>
+        <div>
+          <AlbumCoverBig album={album}></AlbumCoverBig>
           <SongList songs={songs.songs}></SongList>
         </div>
       </Article>

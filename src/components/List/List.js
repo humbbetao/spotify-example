@@ -1,15 +1,15 @@
 import React from 'react'
-import Song from 'components/Song'
+import AlbumCover from 'components/AlbumCover'
 import Label from 'components/Label'
 import './list.css'
 
 export default function List({ title = '', albums = [] }) {
   return (
     <section>
-      <Label>{title}</Label>
-      <ul>
+      <Label className="title-songs-list">{title}</Label>
+      <ul className="content-songs-list">
         {albums.map(album => (
-          <Song key={album.id} album={album}></Song>
+          <AlbumCover key={album.id} album={album}></AlbumCover>
         ))}
       </ul>
     </section>

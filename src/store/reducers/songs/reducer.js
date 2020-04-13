@@ -34,7 +34,7 @@ export default function reducer(state = INITIAL_STATE, action) {
         album: INITIAL_STATE.album,
       }
 
-    case ActionTypes.SEARCH_SONGS_SUCCESS:
+    case ActionTypes.SET_ALBUM:
       return {
         ...state,
         album: { ...action.payload.album },

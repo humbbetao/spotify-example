@@ -1,0 +1,38 @@
+span {
+  width: 600px;
+  height: 600px;
+  display: block;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 16px;
+}
+
+.album-cover-big {
+  width: 80%;
+  height: 80%;
+  min-width: 400px;
+  min-height: 400px;
+  max-width: 600px;
+  max-height: 600px;
+  object-fit: contain;
+  background-color: var(--third-color);
+  box-sizing: border-box;
+  background-color: var(--third-color);
+  background-color: var(--primary-color);
+}
+
+.title-album {
+  color: var(--third-color);
+  font-family: Roboto;
+  text-align: center;
+  padding: 12px 4px;
+  white-space: pre-wrap;
+}
+.artist-album {
+  color: var(--primary-color);
+  font-family: Roboto;
+  text-align: center;
+  padding: 12px 4px;
+  white-space: pre-wrap;
+}
