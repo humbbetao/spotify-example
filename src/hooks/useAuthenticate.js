@@ -4,10 +4,6 @@ import constants from 'config/constants'
 import { useHistory } from 'react-router-dom'
 
 export default function useAuthenticate() {
-  // if (localStorage.getItem(constants.ACCESS_TOKEN || state.auth.isLogged)) {
-  //   return true
-  // }
-
   const dispatch = useDispatch()
   const history = useHistory()
 

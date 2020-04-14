@@ -9,7 +9,6 @@ export default class OAuthServices {
       grant_type: 'authorization_code',
       code: token,
     }
-    // const base64 = '95555d82a874400ab026efab926d00ae'.toString('base64')
     const axiosConfig = {
       headers: {
         authorization: `Basic ${btoa(
@@ -39,4 +38,3 @@ export default class OAuthServices {
       .then(response => response)
   }
 }
-// https://accounts.spotify.com/api/token

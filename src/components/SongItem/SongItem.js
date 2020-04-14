@@ -9,23 +9,9 @@ export default function SongItem(props) {
   const [audio, setAudio] = useState(null)
   const [playing, setPlaying] = useState(false)
   const [timeElapsed, setTimeElapsed] = useState(0)
-  const {
-    fetchSongsPending,
-    songPlaying,
-    // timeElapsed,
-    songId,
-    viewType,
-    songPaused,
-    volume,
-    TIME,
-  } = useSelector(state => ({
-    fetchSongsPending: state.sound.fetchSongsPending,
+  const { songPlaying, songId } = useSelector(state => ({
     songPlaying: state.sound.songPlaying,
-    // timeElapsed: state.sound.timeElapsed,
     songId: state.sound.songId,
-    viewType: state.sound.viewType,
-    songPaused: state.sound.songPaused,
-    volume: state.sound.volume,
   }))
   const dispatch = useDispatch()
 

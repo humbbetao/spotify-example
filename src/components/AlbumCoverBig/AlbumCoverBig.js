@@ -1,19 +1,10 @@
 import React from 'react'
 import P from 'components/P'
 import './albumCoverBig.css'
-import { useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import SongActions from 'store/reducers/songs/actionCreators'
 
 export default function AlbumCoverBig({ album }) {
-  // const history = useHistory()
-  // const dispatch = useDispatch()
   if (!album) return
 
-  // const handleOnClickOnSong = () => {
-  //   dispatch(SongActions.setAlbum(album))
-  //   history.replace(`/albums/${album.id}`)
-  // }
   return (
     <span>
       <picture>

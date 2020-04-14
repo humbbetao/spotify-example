@@ -9,10 +9,8 @@ module.exports = {
   entry: path.resolve(__dirname, './src/app'),
   output: {
     path: path.resolve(__dirname, 'build'),
-    // filename: 'bundle.[hash].js',
     filename: '[name].[hash].js',
     publicPath: '/',
-    // chunkFilename: '[name].[hash].js',
   },
   mode: 'production',
   module: {
@@ -42,7 +40,6 @@ module.exports = {
   optimization: {
     minimize: true,
     splitChunks: {
-      // include all types of chunks
       chunks: 'initial',
       name: true,
     },
@@ -76,7 +73,6 @@ module.exports = {
       },
     }),
     new DotenvPlugin({
-      // makes vars available to the application js code
       path: '.env',
       sample: '.env',
       allowEmptyValues: true,

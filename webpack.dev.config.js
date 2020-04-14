@@ -76,11 +76,9 @@ module.exports = {
       },
     }),
     new DotenvPlugin({
-      // makes vars available to the application js code
       path: '.env',
       sample: '.env.development',
       allowEmptyValues: true,
-      // NODE_ENV: JSON.stringify(process.env.NODE_ENV),
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',

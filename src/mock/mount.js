@@ -33,7 +33,6 @@ export const mountWithRouterAndStoreWithRoutes = (
 
 export function mountWithRouterAndStore2(Component, storeState = {}) {
   const store = createMockStore(storeState)
-  // const history = createHistory()
   const history = {}
   const options = {
     context: { store, router: { history, route: { location: {} } } },
