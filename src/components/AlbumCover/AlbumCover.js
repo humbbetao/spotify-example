@@ -23,7 +23,7 @@ export default function AlbumCover({ album }) {
           album.images.map(image => (
             <source
               key={image.url}
-              media={`(min-width: ${image.width * 3}px)`}
+              media={`(max-width: ${image.width * 2.5}px)`}
               srcSet={image.url}
               alt={album.name}
               className="album-cover"

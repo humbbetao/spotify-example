@@ -29,7 +29,7 @@ describe('Songs Reducer', () => {
     const action = { type: 'dummy_action' }
     let state = Reducer(INITIAL_STATE, action)
     state = Reducer(INITIAL_STATE, actionPlaySong)
-    expect(state.songId).toEqual(id)
+    expect(state.songId).toEqual(song)
 
     state = Reducer(INITIAL_STATE, actionPauseSong)
 

@@ -7,7 +7,8 @@
   text-align: center;
   justify-content: center;
   align-items: center;
-  margin: 16px;
+  /* margin: 16px; */
+  box-sizing: border-box;
 }
 .album-cover {
   width: 80%;
@@ -37,4 +38,10 @@
   padding: 12px 4px;
   font-size: 14px;
   white-space: pre-wrap;
+}
+
+@media (max-width: 600px) {
+  .album-item {
+    margin: 16px 0;
+  }
 }

@@ -1,8 +1,19 @@
-ol {
+.song-list {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   color: #fff;
   list-style-type: none;
+}
+
+@media (max-width: 600px) {
+  .song-list {
+    width: calc(100%);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-sizing: border-box;
+  }
 }

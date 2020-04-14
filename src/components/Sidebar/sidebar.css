@@ -4,3 +4,12 @@ nav {
   padding: 16px;
   box-sizing: border-box;
 }
+
+@media (max-width: 600px) {
+  nav {
+    float: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}

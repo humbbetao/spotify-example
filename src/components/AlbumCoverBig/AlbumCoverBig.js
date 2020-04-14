@@ -20,7 +20,7 @@ export default function AlbumCoverBig({ album }) {
         {album.images.map(image => (
           <source
             key={image.url}
-            media={`(min-width: ${image.width * 3}px)`}
+            media={`(max-width: ${image.width}px)`}
             srcSet={image.url}
             alt={album.name}
             className="album-cover-big"

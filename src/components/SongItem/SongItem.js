@@ -34,6 +34,13 @@ export default function SongItem(props) {
     if (audio) {
       audio.addEventListener('timeupdate', event => {
         setTimeElapsed(audio.currentTime)
+        if ((audio || {}).currentTime >= song.duration_ms) {
+          audio.pause()
+          setTimeElapsed(0)
+          setPlaying(false)
+          setAudio(null)
+          dispatch(SoundActions.stopSong())
+        }
       })
     }
     if (songId === audio.url) {
@@ -41,6 +48,7 @@ export default function SongItem(props) {
       setTimeElapsed(0)
       setPlaying(false)
       setAudio(null)
+      dispatch(SoundActions.stopSong())
     }
 
     return () => {

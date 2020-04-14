@@ -12,9 +12,13 @@ export default function PrivateRoute({ Component, ...routeProps }) {
   }
 
   const artist = ((routeProps.computedMatch || {}).params || {}).artist
-  if (!!artist) {
+  const numberOfParams = Object.keys(
+    (routeProps.computedMatch || {}).params || {}
+  ).length
+  if (!!artist && numberOfParams === 1) {
     localStorage.setItem(constants.ARTIST, artist)
   }
+
   const isAuthenticed = useAuthenticate()
 
   return (
