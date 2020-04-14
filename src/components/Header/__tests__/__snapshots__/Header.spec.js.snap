@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render correctly when children is not passed 1`] = `ReactWrapper {}`;
+
+exports[`Header should render correctly when children is passed 1`] = `ReactWrapper {}`;

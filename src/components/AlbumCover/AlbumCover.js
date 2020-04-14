@@ -5,10 +5,10 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import SongActions from 'store/reducers/songs/actionCreators'
 
-export default function AlbumCover({ album = { image: [] } }) {
+export default function AlbumCover({ album }) {
   const history = useHistory()
   const dispatch = useDispatch()
-  if (!album) return
+  if (!album) return null
   const artist = album.artists[0].name
 
   const handleOnClickOnSong = () => {

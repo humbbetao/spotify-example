@@ -2,7 +2,7 @@ import { mount } from 'enzyme'
 import React from 'react'
 import { createMockStore } from 'redux-test-utils'
 import { Provider } from 'react-redux'
-import { Router, BrowserRouter } from 'react-router-dom'
+import { Router, BrowserRouter, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 export const mountWithRouterAndStore = (Component, storeState = {}) => {
@@ -11,6 +11,22 @@ export const mountWithRouterAndStore = (Component, storeState = {}) => {
   return mount(
     <Provider store={store}>
       <BrowserRouter>{Component}</BrowserRouter>
+    </Provider>
+  )
+}
+
+export const mountWithRouterAndStoreWithRoutes = (
+  Component,
+  storeState = {},
+  path
+) => {
+  const store = createMockStore(storeState)
+
+  return mount(
+    <Provider store={store}>
+      <BrowserRouter>
+        <Router path={path} Component={Component}></Router>
+      </BrowserRouter>
     </Provider>
   )
 }

@@ -24,7 +24,7 @@ describe('Songs Action creators', () => {
     expect(action.payload).toEqual(undefined)
   })
   it('increaseSongTime', () => {
-    const time = '10'
+    const time = 10
     const action = ActionCreators.increaseSongTime(time)
     expect(action.type).toEqual(ActionTypes.INCREASE_SONG_TIME)
     expect(action.payload.time).toEqual(time)

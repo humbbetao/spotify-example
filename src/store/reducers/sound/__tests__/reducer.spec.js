@@ -18,7 +18,6 @@ describe('Songs Reducer', () => {
     expect(state.songPlaying).toEqual(true)
     expect(state.timeElapsed).toEqual(INITIAL_STATE.timeElapsed)
     expect(state.songPaused).toEqual(false)
-    expect(state.volume).toEqual(INITIAL_STATE.volume)
   })
 
   it('Initial State is returned as long as occur an default action or initial action ', () => {
@@ -38,7 +37,6 @@ describe('Songs Reducer', () => {
     expect(state.songPlaying).toEqual(INITIAL_STATE.songPlaying)
     expect(state.timeElapsed).toEqual(INITIAL_STATE.timeElapsed)
     expect(state.songPaused).toEqual(INITIAL_STATE.songPaused)
-    expect(state.volume).toEqual(INITIAL_STATE.volume)
   })
 
   it('Initial State is returned as long as occur an default action or initial action ', () => {
@@ -47,26 +45,32 @@ describe('Songs Reducer', () => {
     const actionPauseSong = ActionCreators.stopSong()
     const actionResumeSong = ActionCreators.resumeSong()
     let state = Reducer(INITIAL_STATE, actionPlaySong)
-    state = Reducer(INITIAL_STATE, actionPauseSong)
-    state = Reducer(INITIAL_STATE, actionResumeSong)
+    expect(state.songId).toEqual(song.id)
+    state = Reducer(state, actionPauseSong)
+    state = Reducer(state, actionResumeSong)
     expect(state.songId).toEqual(song.id)
 
     expect(state.fetchSongsPending).toEqual(INITIAL_STATE.fetchSongsPending)
     expect(state.songPlaying).toEqual(INITIAL_STATE.songPlaying)
     expect(state.timeElapsed).toEqual(INITIAL_STATE.timeElapsed)
-    expect(state.songPaused).toEqual(INITIAL_STATE.songPaused)
-    expect(state.volume).toEqual(INITIAL_STATE.volume)
+    expect(state.songPaused).toEqual(false)
   })
   it('Initial State is returned as long as occur an default action or initial action ', () => {
     const songtime = 10
     const song = { id: 10 }
+    const DumbAction = { type: 'dummy_action' }
+    let state = Reducer(INITIAL_STATE, DumbAction)
 
     const actionPlaySong = ActionCreators.playSong(song)
-    const action = ActionCreators.increaseSongTime(songtime)
+    state = Reducer(state, actionPlaySong)
 
-    let state = Reducer(INITIAL_STATE, action)
-    state = Reducer(INITIAL_STATE, actionPlaySong)
+    const timeElapsedBefore = state.timeElapsed
+
+    const action = ActionCreators.increaseSongTime(songtime)
+    state = Reducer(state, action)
+
     expect(state.songId).toEqual(song.id)
-    expect(state.timeElapsed).toEqual(songtime + state.timeElapsed)
+    const increasedTime = songtime + timeElapsedBefore
+    expect(state.timeElapsed).toEqual(increasedTime)
   })
 })
