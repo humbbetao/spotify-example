@@ -39,13 +39,7 @@ export default function sound(state = INITIAL_STATE, action) {
       }
 
     case ActionTypes.INCREASE_SONG_TIME:
-      console.log(
-        action.payload.time,
-        state.timeElapsed,
-        action.payload.time + state.timeElapsed
-      )
       const newTime = action.payload.time + state.timeElapsed
-      console.log(action.payload.time, state.timeElapsed, newTime)
       return {
         ...state,
         timeElapsed: newTime,

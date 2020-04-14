@@ -15,6 +15,7 @@ export default function Album() {
 
   useEffect(() => {
     dispatch(AlbumActions.search(artist))
+    localStorage.removeItem(constants.PREVIOUS_PATHNAME)
   }, [])
 
   const { query, albums } = useSelector(state => ({
