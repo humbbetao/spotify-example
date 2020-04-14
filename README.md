@@ -3,7 +3,7 @@
 Made by Humberto Gonçalves
 
 
-After downloaded the project, you need the nodejs and npm to execute. Make sure you have them installed in your machine.
+After downloaded the project, you need the nodejs and npm to execute it. Make sure you have them installed in your machine.
 ## How to install:
 In you command line of you OS, type:
 ```
