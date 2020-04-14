@@ -39,3 +39,25 @@ After one of that execute if successful, the default browser will be opened.
 If you have some problem with the command line or other thing.
 Try to contact by email 
 
+
+## 5 - Tests:
+The tests were made with jest and enzyme. besides that I'd tried to make storybook and cypress tests.
+
+```
+      npm run tests 
+```
+      
+## 6 - Git flow and :
+The tests were made with jest and enzyme. besides that I'd tried to make storybook and cypress tests.
+It will run all tests with some features enable
+
+```
+      npm run tests 
+      npm run tests 
+      npm run test:nowatch  
+      npm run test:watch
+      npm run test:collectcoverage
+      npm run test:coverage
+    
+```
+      
