@@ -12,9 +12,7 @@
     "test:nowatch": "jest --watchAll=false",
     "test:watch": "jest --watchAll=true",
     "test:collectcoverage": "jest --collectCoverage",
-    "test:coverage": "jest --coverage",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "test:coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",
@@ -134,7 +132,10 @@
       "!**/coverage/**",
       "!**/build/**",
       "!**/public/**",
-      "!**/src/assets/**"
+      "!**/src/assets/**",
+      "!**/*webpack*.{js,jsx}",
+      "!**/mock/**",
+      "!**/__tests/**"
     ]
   }
 }
