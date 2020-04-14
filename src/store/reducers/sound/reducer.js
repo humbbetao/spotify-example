@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   songId: 0,
   viewType: 'songs',
   songPaused: true,
-  volume: volume,
+  volume: 100,
 }
 
 export default function sound(state = INITIAL_STATE, action) {

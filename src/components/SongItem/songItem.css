@@ -1,11 +1,14 @@
 .song-item {
   color: var(--third-color);
   width: 100%;
-  height: 30px;
-  box-sizing: border-box;
+  height: 40px;
   font-family: var(--font-bold);
   display: flex;
   justify-content: space-between;
+  position: relative;
+  margin: 4px 0;
+  box-sizing: border-box;
+  padding: 8px;
 }
 
 .song-timer {
@@ -19,4 +22,31 @@
 .song-number {
   display: inline-flex;
   width: 50px;
+}
+
+.meter {
+  height: 8px; /* Can be anything */
+  position: relative;
+  background-color: #ccc;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  border-radius: 25px;
+  box-sizing: border-box;
+  width: 300px;
+  box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+}
+.bar {
+  display: block;
+  border-radius: 4px;
+  background-color: var(--primary-color);
+  opacity: 0.5;
+  position: absolute;
+  overflow: hidden;
+  min-height: 18px;
+  max-height: 100%;
+  padding: 6px 0;
+  box-sizing: border-box;
+  z-index: 0;
+  margin: 0;
+  /* max-width: 100%; */
 }

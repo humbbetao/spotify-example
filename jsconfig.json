@@ -1,1 +1,16 @@
-{ "baseUrl": "src" }
+{
+  "baseUrl": "src",
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "target": "es6"
+  },
+  "paths": {
+    "app/*": ["./src/app/*"],
+    "assets/*": ["./src/assets/*"],
+    "components/*": ["./src/components/*"],
+    "pages/*": ["./src/pages/*"],
+    "store/*": ["./src/app/*"],
+    "services/*": ["./src/services/*"],
+    "stories/*": ["./src/stories/*"]
+  }
+}

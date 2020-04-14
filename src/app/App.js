@@ -5,18 +5,21 @@ import store from 'store'
 import './styles.css'
 import Home from 'pages/home'
 import Album from 'pages/album'
+import AlbumDetail from 'pages/albumDetail'
 import NoMatch from 'pages/noMatch'
+import PrivateRoute from '../components/PrivateRoute'
 
 const App = () => (
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
-        <Route exact path="/albums/:artist/:album" component={Album}></Route>
-        <Route
+        <PrivateRoute
           exact
-          path={['/', '/callback', '/albums/:artist']}
-          component={Home}
-        ></Route>
+          path="/albums/:artist/:album"
+          component={AlbumDetail}
+        />
+        <PrivateRoute exact path="/albums/:artist" component={Album} />
+        <Route exact path={['/', '/callback']} component={Home}></Route>
         <Route path="*">
           <NoMatch />
         </Route>

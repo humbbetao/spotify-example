@@ -1,9 +1,9 @@
-import ActionTypes from './actionTypes '
+import ActionTypes from './actionTypes'
 export default {
   playSong: function(song) {
     return {
       type: ActionTypes.PLAY_SONG,
-      song,
+      paylod: { song },
     }
   },
 
@@ -28,14 +28,14 @@ export default {
   playSong: function(time) {
     return {
       type: ActionTypes.INCREASE_SONG_TIME,
-      time,
+      payload: { time },
     }
   },
 
   updateViewType: function(view) {
     return {
       type: ActionTypes.UPDATE_VIEW_TYPE,
-      view,
+      payload: { view },
     }
   },
 }

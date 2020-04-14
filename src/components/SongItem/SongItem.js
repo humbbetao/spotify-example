@@ -1,76 +1,107 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './songItem.css'
 import Label from 'components/Label'
 import convertFromMsToMin from './convertFromMsToMin'
-export default class SongItem extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { playing: false }
-    this.audio = null
-  }
+import SoundActions from 'store/reducers/sound/actionCreators'
+import { useSelector, useDispatch } from 'react-redux'
 
-  componentWillUnmount() {
-    if (this.audio) {
-      this.audio.pause()
+export default function SongItem(props) {
+  let audio = null
+  const [playing, setPlaying] = useState(false)
+  const {
+    fetchSongsPending,
+    songPlaying,
+    timeElapsed,
+    songId,
+    viewType,
+    songPaused,
+    volume,
+  } = useSelector(state => ({
+    fetchSongsPending: state.sound.fetchSongsPending,
+    songPlaying: state.sound.songPlaying,
+    timeElapsed: state.sound.timeElapsed,
+    songId: state.sound.songId,
+    viewType: state.sound.viewType,
+    songPaused: state.sound.songPaused,
+    volume: state.sound.volume,
+  }))
+  const dispatch = useDispatch()
+  useEffect(() => {
+    return () => {
+      if (audio) {
+        audio.pause()
+      }
+      audio = null
     }
-    this.audio = null
-  }
+  }, [])
 
-  stopSong = () => {
-    if (this.audio) {
-      // this.props.stopSong()
-      this.setState({ playing: false })
+  const stopSong = () => {
+    if (audio) {
+      dispatch(SoundActions.stopSong())
+      setPlaying(false)
 
-      this.audio.pause()
+      audio.pause()
     }
   }
 
-  pauseSong = () => {
-    if (this.audio) {
-      // this.props.pauseSong()
-      this.setState({ playing: false })
+  const pauseSong = () => {
+    if (audio) {
+      dispatch(SoundActions.pauseSong())
+      setPlaying(false)
 
-      this.audio.pause()
+      audio.pause()
     }
   }
 
-  resumeSong = () => {
-    if (this.audio) {
-      // this.props.resumeSong()
+  const resumeSong = () => {
+    if (audio) {
+      dispatch(SoundActions.resumeSong())
       this.setState({ playing: true })
 
-      this.audio.play()
+      audio.play()
     }
   }
 
-  audioControl = () => {
-    const { song } = this.props
-    if (!this.audio) {
-      // playSong(song.track)
-      this.audio = new Audio(song.preview_url)
-      this.audio.play()
+  const audioControl = () => {
+    const { song } = props
+    if (!audio) {
+      dispatch(SoundActions.playSong(song.track))
+      audio = new Audio(song.preview_url)
+      audio.play()
+      setPlaying(true)
     } else {
-      // stopSong()
-      this.audio.pause()
-      // playSong(song.track)
-      this.audio = new Audio(song.preview_url)
-      this.audio.play()
+      dispatch(SoundActions.stopSong())
+      audio.pause()
+      setPlaying(false)
+      dispatch(SoundActions.playSong(song.track))
+      audio = new Audio(song.preview_url)
+      audio.play()
+      setPlaying(true)
     }
   }
 
-  render() {
-    const { song, id } = this.props
-    return (
-      <li className="song-item" onClick={this.audioControl}>
-        <div style={{ width: '80%' }}>
-          <Label className="song-number color">{`${id}.`} </Label>
-          <Label>{song.name}</Label>
-        </div>
-
-        <Label className="color song-timer">
-          {convertFromMsToMin(song.duration_ms)}
-        </Label>
-      </li>
-    )
-  }
+  const { song, id } = props
+  return (
+    <li className="song-item" onClick={audioControl}>
+      <span
+        className="bar"
+        style={
+          playing
+            ? { width: `${(audio || {}).currentTime / song.duration_ms}px` }
+            : {}
+        }
+      ></span>
+      <div style={{ zIndex: 1, padding: '8px' }}>
+        <Label className="song-number color">{`${id}.`} </Label>
+        <Label>{song.name}</Label>
+      </div>
+      <div className="song-timer color">
+        {playing
+          ? `${convertFromMsToMin(
+              (audio || {}).currentTime * 1000
+            )}:${convertFromMsToMin(song.duration_ms)}`
+          : convertFromMsToMin(song.duration_ms)}
+      </div>
+    </li>
+  )
 }
