@@ -8,6 +8,7 @@ import useTitle from 'hooks/useTitle'
 import './album.css'
 import { useParams } from 'react-router-dom'
 import AlbumActions from '../../store/reducers/album/actionCreators'
+import constants from 'config/constants'
 
 export default function Album() {
   const { artist } = useParams()

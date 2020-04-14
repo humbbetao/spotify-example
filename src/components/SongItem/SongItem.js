@@ -33,22 +33,25 @@ export default function SongItem(props) {
     if (!audio) return
     if (audio) {
       audio.addEventListener('timeupdate', event => {
-        // some code to calculate currentTime for first time
-        // setTimeElapsed(event.target.currentTime)
-        // audio.currentTime = setTimeElapsed
         setTimeElapsed(audio.currentTime)
       })
     }
+    if (songId === audio.url) {
+      audio.pause()
+      setTimeElapsed(0)
+      setPlaying(false)
+      setAudio(null)
+    }
+
     return () => {
       if (audio) {
         audio.pause()
-        // audio.removeEventListener('timeupdate', () => {})
       }
       setTimeElapsed(0)
       setPlaying(false)
       setAudio(null)
     }
-  }, [audio])
+  }, [audio, songId])
 
   const stopSong = () => {
     if (audio) {
@@ -59,28 +62,15 @@ export default function SongItem(props) {
     }
   }
 
-  const pauseSong = () => {
-    if (audio) {
-      dispatch(SoundActions.pauseSong())
-      setPlaying(false)
-
-      audio.pause()
-    }
-  }
-
-  const resumeSong = () => {
-    if (audio) {
-      dispatch(SoundActions.resumeSong())
-      this.setState({ playing: true })
-
-      audio.play()
-    }
-  }
-
   const audioControl = () => {
+    if (songPlaying) {
+      stopSong()
+      setAudio(null)
+    }
     const { song } = props
+
     if (!audio) {
-      dispatch(SoundActions.playSong(song.track))
+      dispatch(SoundActions.playSong(song.preview_url))
       const newAudio = new Audio(song.preview_url)
       setAudio(newAudio)
       newAudio.play()

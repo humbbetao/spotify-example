@@ -13,12 +13,8 @@ span {
   height: 80%;
   min-width: 400px;
   min-height: 400px;
-  max-width: 600px;
-  max-height: 600px;
   object-fit: contain;
-  background-color: var(--third-color);
   box-sizing: border-box;
-  background-color: var(--third-color);
   background-color: var(--primary-color);
 }
 

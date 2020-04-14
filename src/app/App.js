@@ -9,7 +9,6 @@ import NoMatch from 'pages/noMatch'
 import PrivateRoute from 'components/PrivateRoute'
 
 import './styles.css'
-
 const App = () => (
   <Provider store={store}>
     <BrowserRouter>

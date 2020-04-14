@@ -73,6 +73,7 @@ module.exports = {
       path: '.env',
       sample: '.env.homolog',
       allowEmptyValues: true,
+      // NODE_ENV
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css',

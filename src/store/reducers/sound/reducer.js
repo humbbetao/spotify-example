@@ -13,7 +13,7 @@ export default function sound(state = INITIAL_STATE, action) {
       return {
         ...state,
         songPlaying: true,
-        songId: action.payload.song.id,
+        songId: action.payload.song,
         timeElapsed: 0,
         songPaused: false,
       }

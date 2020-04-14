@@ -80,6 +80,7 @@ module.exports = {
       path: '.env',
       sample: '.env.development',
       allowEmptyValues: true,
+      // NODE_ENV: JSON.stringify(process.env.NODE_ENV),
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',

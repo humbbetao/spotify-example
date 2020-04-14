@@ -5,17 +5,17 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import SongActions from 'store/reducers/songs/actionCreators'
 
-export default function AlbumCoverBig({ album = { images: [] } }) {
-  const history = useHistory()
-  const dispatch = useDispatch()
+export default function AlbumCoverBig({ album }) {
+  // const history = useHistory()
+  // const dispatch = useDispatch()
   if (!album) return
 
-  const handleOnClickOnSong = () => {
-    dispatch(SongActions.setAlbum(album))
-    history.replace(`/albums/${album.id}`)
-  }
+  // const handleOnClickOnSong = () => {
+  //   dispatch(SongActions.setAlbum(album))
+  //   history.replace(`/albums/${album.id}`)
+  // }
   return (
-    <span onClick={handleOnClickOnSong}>
+    <span>
       <picture>
         {album.images.map(image => (
           <source
@@ -35,8 +35,8 @@ export default function AlbumCoverBig({ album = { images: [] } }) {
         )}
       </picture>
 
-      <P>{album.artists[0].name}</P>
-      <P>{album.name}</P>
+      <P className="title-album">{album.artists[0].name}</P>
+      <P className="artist-album">{album.name}</P>
     </span>
   )
 }
