@@ -1,14 +1,17 @@
 import { useSelector, useDispatch } from 'react-redux'
 import AuthActionsCreators from 'store/reducers/auth/actionCreators'
 import constants from 'config/constants'
+import { useHistory } from 'react-router-dom'
 
 export default function useAuthenticate() {
   // if (localStorage.getItem(constants.ACCESS_TOKEN || state.auth.isLogged)) {
   //   return true
   // }
-  const dispatch = useDispatch()
-  const isLogged = useSelector(state => state.auth.isLogged)
 
+  const dispatch = useDispatch()
+  const history = useHistory()
+
+  const isLogged = useSelector(state => state.auth.isLogged)
   if (isLogged) return true
 
   try {
@@ -25,6 +28,12 @@ export default function useAuthenticate() {
       window.location.href = spotify
     } else {
       dispatch(AuthActionsCreators.setToken(hashParams.access_token))
+
+      const pathName = localStorage.getItem(constants.PREVIOUS_PATHNAME)
+      localStorage.removeItem(constants.PREVIOUS_PATHNAME)
+
+      history.push(pathName || '/')
+
       return true
     }
   } catch (e) {

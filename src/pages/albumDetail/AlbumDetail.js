@@ -6,7 +6,8 @@ import AlbumCoverBig from 'components/AlbumCoverBig'
 
 import { useSelector, useDispatch } from 'react-redux'
 import SongList from 'components/SongList'
-import { useHistory, useParams } from 'react-router-dom'
+import { useParams } from 'react-router'
+import { useHistory } from 'react-router-dom'
 import SongsActions from '../../store/reducers/songs/actionCreators'
 
 import './albumDetail.css'
@@ -24,9 +25,10 @@ export default function Album() {
       album: album,
     }
   })
+
   useEffect(() => {
     dispatch(SongsActions.getSongs(params.album))
-  })
+  }, [params.album, dispatch])
 
   if (!songs || !album) return null
 
