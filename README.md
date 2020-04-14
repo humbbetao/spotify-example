@@ -42,13 +42,6 @@ Try to contact by email
 
 ## 5 - Tests:
 The tests were made with jest and enzyme. besides that I'd tried to make storybook and cypress tests.
-
-```
-      npm run tests 
-```
-      
-## 6 - Git flow and :
-The tests were made with jest and enzyme. besides that I'd tried to make storybook and cypress tests.
 It will run all tests with some features enable
 
 ```
@@ -60,4 +53,9 @@ It will run all tests with some features enable
       npm run test:coverage
     
 ```
+      
+
+## 6 - Husky:
+There is a pre commit husky to fix with eslint and prettier 
+
       
