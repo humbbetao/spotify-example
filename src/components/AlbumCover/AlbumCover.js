@@ -8,7 +8,6 @@ import SongActions from 'store/reducers/songs/actionCreators'
 export default function AlbumCover({ album = { image: [] } }) {
   const history = useHistory()
   const dispatch = useDispatch()
-  console.log('album', album)
   if (!album) return
   const artist = album.artists[0].name
 

@@ -1,9 +1,10 @@
 import ActionTypes from './actionTypes'
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   query: '',
   history: [],
   albums: [],
+  albumsError: undefined,
 }
 
 export default function reducer(state = INITIAL_STATE, action) {
@@ -38,7 +39,7 @@ export default function reducer(state = INITIAL_STATE, action) {
     case ActionTypes.SEARCH_ALBUMS_ERROR:
       return {
         ...state,
-        albunsError: action.payload.albunsError,
+        albumsError: action.payload.error,
       }
     case ActionTypes.CLEAR_ALBUMS:
       return {
@@ -48,6 +49,6 @@ export default function reducer(state = INITIAL_STATE, action) {
       }
 
     default:
-      return state
+      return { ...state }
   }
 }

@@ -1,26 +1,18 @@
 import ActionTypes from './actionTypes'
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   fetchSongsPending: true,
   songPlaying: false,
   timeElapsed: 0,
   songId: 0,
-  viewType: 'songs',
   songPaused: true,
-  volume: 100,
 }
 
 export default function sound(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case ActionTypes.UPDATE_VOLUME:
-      return {
-        volume: action.payload.volume,
-      }
-
     case ActionTypes.PLAY_SONG:
       return {
         ...state,
         songPlaying: true,
-        songDetails: action.payload.song,
         songId: action.payload.song.id,
         timeElapsed: 0,
         songPaused: false,
@@ -30,7 +22,6 @@ export default function sound(state = INITIAL_STATE, action) {
       return {
         ...state,
         songPlaying: false,
-        songDetails: null,
         timeElapsed: 0,
         songPaused: true,
       }
@@ -50,7 +41,7 @@ export default function sound(state = INITIAL_STATE, action) {
     case ActionTypes.INCREASE_SONG_TIME:
       return {
         ...state,
-        timeElapsed: action.payload.time,
+        timeElapsed: action.payload.time + state.timeElapsed,
       }
 
     default:

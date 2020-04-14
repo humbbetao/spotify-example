@@ -4,10 +4,7 @@ import ActionTypes from './actionTypes'
 import constants from 'config/constants'
 
 function tokenRefreshMonitor(response) {
-  console.log('hey!  listen! ', response)
-  console.log('hey!  listen! ', response.status)
   if (response.code === 401) {
-    console.log('deu ruim')
   }
 }
 

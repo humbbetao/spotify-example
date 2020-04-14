@@ -25,11 +25,9 @@ function* searchAlbums(action) {
       const albums = response.data.albums.items
       yield put(ActionCreators.setAlbums(albums))
     } else {
-      console.log(response.error)
       yield put(ActionCreators.setAlbumsError(response.error))
     }
   } catch (error) {
-    console.log(error)
     yield put(ActionCreators.setAlbumsError(error))
   }
 }

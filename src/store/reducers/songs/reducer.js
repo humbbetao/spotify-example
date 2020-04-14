@@ -1,6 +1,6 @@
 import ActionTypes from './actionTypes'
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   album: {},
   songs: [],
 }
@@ -12,11 +12,6 @@ export default function reducer(state = INITIAL_STATE, action) {
         ...state,
       }
     case ActionTypes.SEARCH_SONGS_SUCCESS:
-      console.log([...action.payload.songs])
-      console.log({
-        ...state,
-        songs: [...action.payload.songs],
-      })
       return {
         ...state,
         songs: [...action.payload.songs],

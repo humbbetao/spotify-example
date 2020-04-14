@@ -3,7 +3,6 @@ import React from 'react'
 import { createMockStore } from 'redux-test-utils'
 import { Provider } from 'react-redux'
 import { Router, BrowserRouter } from 'react-router-dom'
-import { createHistory } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 export const mountWithRouterAndStore = (Component, storeState = {}) => {

@@ -13,11 +13,9 @@ function* searchSongs(action) {
       const songs = response.data.tracks.items
       yield put(ActionCreators.setSongs(songs))
     } else {
-      console.log(response.data)
       yield put(ActionCreators.setSongsError(response.data))
     }
   } catch (error) {
-    console.log(error)
     yield put(ActionCreators.setSongsError(error))
   }
 }

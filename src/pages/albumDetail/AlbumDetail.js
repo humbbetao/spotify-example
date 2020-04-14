@@ -33,7 +33,6 @@ export default function AlbumDetail() {
   if (!songs || !album) return null
 
   const goBack = () => history.goBack()
-  console.log(history)
   return (
     <main>
       <Sidebar></Sidebar>

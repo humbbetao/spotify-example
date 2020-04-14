@@ -32,10 +32,8 @@ export default function SongItem(props) {
   useEffect(() => {
     if (!audio) return
     if (audio) {
-      console.log(audio)
       audio.addEventListener('timeupdate', event => {
         // some code to calculate currentTime for first time
-        console.log('timeupdate')
         // setTimeElapsed(event.target.currentTime)
         // audio.currentTime = setTimeElapsed
         setTimeElapsed(audio.currentTime)
@@ -101,14 +99,6 @@ export default function SongItem(props) {
   }
 
   const { song, id } = props
-  // if (playing) {
-  console.log(
-    playing,
-    audio,
-    timeElapsed,
-    song.duration_ms,
-    convertFromMsToMin(song.duration_ms)
-  )
 
   return (
     <li className="song-item" onClick={audioControl}>

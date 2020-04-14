@@ -1,5 +1,5 @@
 import ActionTypes from './actionTypes'
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   isLogged: false,
 }
 export default function reducer(state = INITIAL_STATE, action) {

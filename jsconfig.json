@@ -8,6 +8,7 @@
     "store/*": ["./src/app/*"],
     "services/*": ["./src/services/*"],
     "stories/*": ["./src/stories/*"],
-    "hooks/*": ["./src/hooks/*"]
+    "hooks/*": ["./src/hooks/*"],
+    "mocks/*": ["./src/mocks/*"]
   }
 }

@@ -9,7 +9,6 @@ export default function AlbumCoverBig({ album = { images: [] } }) {
   const history = useHistory()
   const dispatch = useDispatch()
   if (!album) return
-  console.log(album)
 
   const handleOnClickOnSong = () => {
     dispatch(SongActions.setAlbum(album))

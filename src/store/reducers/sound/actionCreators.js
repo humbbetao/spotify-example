@@ -3,7 +3,7 @@ export default {
   playSong: function(song) {
     return {
       type: ActionTypes.PLAY_SONG,
-      paylod: { song },
+      payload: { song },
     }
   },
 
@@ -25,17 +25,10 @@ export default {
     }
   },
 
-  playSong: function(time) {
+  increaseSongTime: function(time) {
     return {
       type: ActionTypes.INCREASE_SONG_TIME,
       payload: { time },
-    }
-  },
-
-  updateViewType: function(view) {
-    return {
-      type: ActionTypes.UPDATE_VIEW_TYPE,
-      payload: { view },
     }
   },
 }

@@ -14,8 +14,6 @@ export default function Home() {
   }))
 
   const title = useTitle()
-  console.log('aqui')
-  console.log(query, (history[0] || {}).albums)
   return (
     <main>
       <Sidebar />
