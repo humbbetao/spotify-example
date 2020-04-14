@@ -13,8 +13,6 @@
     "test:watch": "jest --watchAll=true",
     "test:collectcoverage": "jest --collectCoverage",
     "test:coverage": "jest --coverage",
-    "cy:run": "cypress run",
-    "cy:open": "cypress open",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -41,11 +39,12 @@
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "cd": "^0.3.3",
     "css-loader": "^3.5.1",
-    "cypress": "^4.3.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-cypress": "^2.10.3",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-react": "^7.19.0",
@@ -53,11 +52,15 @@
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.2.0",
     "husky": "^4.2.5",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^25.3.0",
+    "jest-transform-css": "^2.0.0",
+    "jest-transform-stub": "^2.0.0",
     "lint-staged": "^10.1.3",
     "mini-css-extract-plugin": "^0.9.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "redux-devtools-extension": "^2.13.8",
+    "redux-test-utils": "^0.3.0",
     "style-loader": "^1.1.3",
     "terser": "^4.6.11",
     "webpack": "^4.42.1",
@@ -86,6 +89,51 @@
     "src/**/*.{js,jsx,json}": [
       "eslint --fix",
       "prettier --config .prettierrc --write"
+    ]
+  },
+  "setupFiles": [
+    "<rootDir>/src/setupTests.js"
+  ],
+  "jest": {
+    "verbose": true,
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.js"
+    ],
+    "watchPathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "modulePaths": [
+      "<rootDir>",
+      "<rootDir>/src"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest",
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+    },
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|scss)$": "identity-obj-proxy"
+    },
+    "globals": {
+      "js-jest": {
+        "diagnostics": false
+      },
+      "babel-jest": {
+        "diagnostics": false
+      }
+    },
+    "collectCoverage": false,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/*index.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/coverage/**",
+      "!**/build/**",
+      "!**/public/**",
+      "!**/src/assets/**"
     ]
   }
 }

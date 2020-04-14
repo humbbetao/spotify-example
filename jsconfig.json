@@ -1,9 +1,5 @@
 {
   "baseUrl": "src",
-  "exclude": ["node_modules"],
-  "compilerOptions": {
-    "target": "es6"
-  },
   "paths": {
     "app/*": ["./src/app/*"],
     "assets/*": ["./src/assets/*"],
