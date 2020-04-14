@@ -11,6 +11,7 @@
     "pages/*": ["./src/pages/*"],
     "store/*": ["./src/app/*"],
     "services/*": ["./src/services/*"],
-    "stories/*": ["./src/stories/*"]
+    "stories/*": ["./src/stories/*"],
+    "hooks/*": ["./src/hooks/*"]
   }
 }

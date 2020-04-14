@@ -1,13 +1,14 @@
-import React, { lazy, Suspense } from 'react'
+import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from 'store'
-import './styles.css'
 import Home from 'pages/home'
 import Album from 'pages/album'
 import AlbumDetail from 'pages/albumDetail'
 import NoMatch from 'pages/noMatch'
-import PrivateRoute from '../components/PrivateRoute'
+import PrivateRoute from 'components/PrivateRoute'
+
+import './styles.css'
 
 const App = () => (
   <Provider store={store}>
@@ -16,10 +17,10 @@ const App = () => (
         <PrivateRoute
           exact
           path="/albums/:artist/:album"
-          component={AlbumDetail}
+          Component={AlbumDetail}
         />
-        <PrivateRoute exact path="/albums/:artist" component={Album} />
-        <Route exact path={['/', '/callback']} component={Home}></Route>
+        <PrivateRoute exact path="/albums/:artist" Component={Album} />
+        <PrivateRoute exact path={['/', '/callback']} Component={Home} />
         <Route path="*">
           <NoMatch />
         </Route>

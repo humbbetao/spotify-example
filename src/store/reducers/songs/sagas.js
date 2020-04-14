@@ -10,7 +10,6 @@ function* searchSongs(action) {
     )
 
     if (response.ok) {
-      debugger
       const songs = response.data.tracks.items
       yield put(ActionCreators.setSongs(songs))
     } else {
