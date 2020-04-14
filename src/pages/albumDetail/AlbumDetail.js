@@ -8,11 +8,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import SongList from 'components/SongList'
 import { useParams } from 'react-router'
 import { useHistory } from 'react-router-dom'
-import SongsActions from '../../store/reducers/songs/actionCreators'
+import SongsActions from 'store/reducers/songs/actionCreators'
 
 import './albumDetail.css'
 
-export default function Album() {
+export default function AlbumDetail() {
   const params = useParams()
   const dispatch = useDispatch()
   const history = useHistory()

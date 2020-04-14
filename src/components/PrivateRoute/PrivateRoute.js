@@ -5,8 +5,6 @@ import constants from 'config/constants'
 
 export default function PrivateRoute({ Component, ...routeProps }) {
   if (routeProps.location.pathname.includes('/album')) {
-    debugger
-
     localStorage.setItem(
       constants.PREVIOUS_PATHNAME,
       routeProps.location.pathname

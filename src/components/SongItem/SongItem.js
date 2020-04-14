@@ -6,34 +6,51 @@ import SoundActions from 'store/reducers/sound/actionCreators'
 import { useSelector, useDispatch } from 'react-redux'
 
 export default function SongItem(props) {
-  let audio = null
+  const [audio, setAudio] = useState(null)
   const [playing, setPlaying] = useState(false)
+  const [timeElapsed, setTimeElapsed] = useState(0)
   const {
     fetchSongsPending,
     songPlaying,
-    timeElapsed,
+    // timeElapsed,
     songId,
     viewType,
     songPaused,
     volume,
+    TIME,
   } = useSelector(state => ({
     fetchSongsPending: state.sound.fetchSongsPending,
     songPlaying: state.sound.songPlaying,
-    timeElapsed: state.sound.timeElapsed,
+    // timeElapsed: state.sound.timeElapsed,
     songId: state.sound.songId,
     viewType: state.sound.viewType,
     songPaused: state.sound.songPaused,
     volume: state.sound.volume,
   }))
   const dispatch = useDispatch()
+
   useEffect(() => {
+    if (!audio) return
+    if (audio) {
+      console.log(audio)
+      audio.addEventListener('timeupdate', event => {
+        // some code to calculate currentTime for first time
+        console.log('timeupdate')
+        // setTimeElapsed(event.target.currentTime)
+        // audio.currentTime = setTimeElapsed
+        setTimeElapsed(audio.currentTime)
+      })
+    }
     return () => {
       if (audio) {
         audio.pause()
+        // audio.removeEventListener('timeupdate', () => {})
       }
-      audio = null
+      setTimeElapsed(0)
+      setPlaying(false)
+      setAudio(null)
     }
-  }, [])
+  }, [audio])
 
   const stopSong = () => {
     if (audio) {
@@ -66,28 +83,42 @@ export default function SongItem(props) {
     const { song } = props
     if (!audio) {
       dispatch(SoundActions.playSong(song.track))
-      audio = new Audio(song.preview_url)
-      audio.play()
+      const newAudio = new Audio(song.preview_url)
+      setAudio(newAudio)
+      newAudio.play()
       setPlaying(true)
     } else {
       dispatch(SoundActions.stopSong())
       audio.pause()
+      setTimeElapsed(0)
       setPlaying(false)
       dispatch(SoundActions.playSong(song.track))
-      audio = new Audio(song.preview_url)
-      audio.play()
+      const newAudio = new Audio(song.preview_url)
+      setAudio(newAudio)
+      newAudio.play()
       setPlaying(true)
     }
   }
 
   const { song, id } = props
+  // if (playing) {
+  console.log(
+    playing,
+    audio,
+    timeElapsed,
+    song.duration_ms,
+    convertFromMsToMin(song.duration_ms)
+  )
+
   return (
     <li className="song-item" onClick={audioControl}>
       <span
         className="bar"
         style={
           playing
-            ? { width: `${(audio || {}).currentTime / song.duration_ms}px` }
+            ? {
+                width: `${((audio || {}).currentTime / audio.duration) * 100}%`,
+              }
             : {}
         }
       ></span>
@@ -97,9 +128,9 @@ export default function SongItem(props) {
       </div>
       <div className="song-timer color">
         {playing
-          ? `${convertFromMsToMin(
+          ? `Ouvindo: ${convertFromMsToMin(
               (audio || {}).currentTime * 1000
-            )}:${convertFromMsToMin(song.duration_ms)}`
+            )}s de ${convertFromMsToMin(song.duration_ms)} `
           : convertFromMsToMin(song.duration_ms)}
       </div>
     </li>
